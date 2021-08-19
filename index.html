@@ -401,6 +401,63 @@
                 </div>
             </div>
 
+            
+            <div class="modal fade" id="paleta_distinta_modal" ref="paleta_distinta_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">El código de la paleta es diferente</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      
+                        <h2 class="text-center mt-5 mb-5">Confirmar nueva paleta en el hueco</h2>                       
+                        <div class="row mt-5">
+                            <div class="col-4">
+                                <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera" width="300px">
+                            </div>
+                            <div class="col-8 fs-3">
+                                <div class="row text-start">
+                                    <div class="col-4">Pasillo</div>
+                                    <div class="col-4">Columna</div>
+                                    <div class="col-4">Altura</div>
+                                </div>
+                                <div class="row text-start fw-bold">
+                                    <div class="col-4">{{ubicacion_seleccionada.pasillo}}</div>
+                                    <div class="col-4">{{ubicacion_seleccionada.columna}}</div>
+                                    <div class="col-4">{{ubicacion_seleccionada.altura}}</div>
+                                </div>
+                                <div class="row mt-4 text-start fw-bold">
+                                    <div class="col-12">Descripción Articulo</div>
+                                </div>
+                                <div class="row mt-4 text-start fs-4">
+                                    <div class="col-4">Artículo</div>
+                                    <div class="col-4">V. logística</div>
+                                    <div class="col-4">Cantidad</div>
+                                </div>
+                                <div class="row text-start fw-bold fs-4">
+                                    <div class="col-4">58514</div>
+                                    <div class="col-4">2</div>
+                                    <div class="col-4">30 Cajas</div>
+                                </div>
+                                <div class="row mt-4 text-start">
+                                    <div class="col-12">Código Paleta</div>
+                                </div>
+                                <div class="row text-start fw-bold">
+                                    <div class="col-12">{{codigo_paleta_escaneada}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" @click="modal.hide();codigo_paleta_escaneada='';">Cerrar</button>
+                      <button type="button" class="btn btn-primary">Confirmar</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
 
 
             <div class="row fixed-bottom" style="background-color: lightgray">
@@ -408,7 +465,7 @@
                     <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
                 </div>
                 <div class="col-6 text-end">
-                    <button class="btn btn-primary mt-2 mb-2 me-2 fs-4">Validar paleta</button>
+                    <button @click="datos_paleta()" class="btn btn-primary mt-2 mb-2 me-2 fs-4">Validar paleta</button>
                 </div>
             </div>
 
@@ -416,18 +473,79 @@
         </div> <!-- fin contenido_ubicacion -->
 
 
+
+        <div v-if="pantalla_actual=='datos_de_paleta'">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a @click="regresar_inventario()" class="nav-link active" aria-current="page" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                      </svg>
+                                    <b>Datos de paleta</b></a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav me-end mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link " href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-bell" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#">{{usuario}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#">{{almacen}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="col-8 offset-2 mb-4">
+                <h2 class="text-center mt-5 mb-4">Info de paleta</h2>
+                
+            </div>
+
+
+            <div class="row fixed-bottom" style="background-color: lightgray">
+                <div class="col" style="margin: .5em;">
+                    Terminal {{numero_terminal}} ( 192.168.1.1 )
+                </div>
+            </div>
+
+
+        </div> <!-- fin datos_de_paleta -->
+
+
     </div> <!-- fin app -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    
     <script>
 
         var app = new Vue({
             el: '#app',
             data: {
-                pantalla_actual: 'login',
+                pantalla_actual: 'contenido_ubicacion',
                 almacen: '',
                 usuario: 'juanra',
                 password: 'juanra',
@@ -449,6 +567,12 @@
                     }                    
                 },
                 codigo_paleta_escaneada: '',
+                modal: null,
+            },
+            mounted(){
+                
+                this.modal = new bootstrap.Modal(this.$refs.paleta_distinta_modal)
+                
             },
             methods: {
                 opcion_no_implementada() {
@@ -509,6 +633,18 @@
                         this.password = ''
                         this.pantalla_actual = 'login'
                     }
+                },
+                validar_paleta() {
+                    if (this.codigo_paleta_escaneada==='186383453320098066') {
+                        this.modal.show()
+                    } else if (this.codigo_paleta_escaneada == '') {
+                        this.datos_paleta()
+                    } else {
+                        alert("Articulo de paleta escaneada distinto al artículo del hueco")
+                    }
+                },
+                datos_paleta(){
+                    this.pantalla_actual='datos_de_paleta'
                 }
             }
         })
