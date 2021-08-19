@@ -16,6 +16,62 @@
 <body>
     <div id="app">
 
+        <div class="modal fade" id="paleta_distinta_modal" ref="paleta_distinta_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">El código de la paleta es diferente</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                    <h2 class="text-center mt-5 mb-5">Confirmar nueva paleta en el hueco</h2>                       
+                    <div class="row mt-5">
+                        <div class="col-4">
+                            <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera" width="300px">
+                        </div>
+                        <div class="col-8 fs-3">
+                            <div class="row text-start">
+                                <div class="col-4">Pasillo</div>
+                                <div class="col-4">Columna</div>
+                                <div class="col-4">Altura</div>
+                            </div>
+                            <div class="row text-start fw-bold">
+                                <div class="col-4">{{ubicacion_seleccionada.pasillo}}</div>
+                                <div class="col-4">{{ubicacion_seleccionada.columna}}</div>
+                                <div class="col-4">{{ubicacion_seleccionada.altura}}</div>
+                            </div>
+                            <div class="row mt-4 text-start fw-bold">
+                                <div class="col-12">Descripción Articulo</div>
+                            </div>
+                            <div class="row mt-4 text-start fs-4">
+                                <div class="col-4">Artículo</div>
+                                <div class="col-4">V. logística</div>
+                                <div class="col-4">Cantidad</div>
+                            </div>
+                            <div class="row text-start fw-bold fs-4">
+                                <div class="col-4">58514</div>
+                                <div class="col-4">2</div>
+                                <div class="col-4">30 Cajas</div>
+                            </div>
+                            <div class="row mt-4 text-start">
+                                <div class="col-12">Código Paleta</div>
+                            </div>
+                            <div class="row text-start fw-bold">
+                                <div class="col-12">{{codigo_paleta_escaneada}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" @click="modal.hide();codigo_paleta_escaneada='';">Cerrar</button>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
         <div v-if="pantalla_actual=='login'" class="row">
             <div class="col-6 offset-3">
 
@@ -402,61 +458,7 @@
             </div>
 
             
-            <div class="modal fade" id="paleta_distinta_modal" ref="paleta_distinta_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">El código de la paleta es diferente</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      
-                        <h2 class="text-center mt-5 mb-5">Confirmar nueva paleta en el hueco</h2>                       
-                        <div class="row mt-5">
-                            <div class="col-4">
-                                <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera" width="300px">
-                            </div>
-                            <div class="col-8 fs-3">
-                                <div class="row text-start">
-                                    <div class="col-4">Pasillo</div>
-                                    <div class="col-4">Columna</div>
-                                    <div class="col-4">Altura</div>
-                                </div>
-                                <div class="row text-start fw-bold">
-                                    <div class="col-4">{{ubicacion_seleccionada.pasillo}}</div>
-                                    <div class="col-4">{{ubicacion_seleccionada.columna}}</div>
-                                    <div class="col-4">{{ubicacion_seleccionada.altura}}</div>
-                                </div>
-                                <div class="row mt-4 text-start fw-bold">
-                                    <div class="col-12">Descripción Articulo</div>
-                                </div>
-                                <div class="row mt-4 text-start fs-4">
-                                    <div class="col-4">Artículo</div>
-                                    <div class="col-4">V. logística</div>
-                                    <div class="col-4">Cantidad</div>
-                                </div>
-                                <div class="row text-start fw-bold fs-4">
-                                    <div class="col-4">58514</div>
-                                    <div class="col-4">2</div>
-                                    <div class="col-4">30 Cajas</div>
-                                </div>
-                                <div class="row mt-4 text-start">
-                                    <div class="col-12">Código Paleta</div>
-                                </div>
-                                <div class="row text-start fw-bold">
-                                    <div class="col-12">{{codigo_paleta_escaneada}}</div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" @click="modal.hide();codigo_paleta_escaneada='';">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Confirmar</button>
-                    </div>
-                  </div>
-                </div>
-            </div>
+            
 
 
 
@@ -465,7 +467,7 @@
                     <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
                 </div>
                 <div class="col-6 text-end">
-                    <button @click="datos_paleta()" class="btn btn-primary mt-2 mb-2 me-2 fs-4">Validar paleta</button>
+                    <button @click="validar_paleta()" class="btn btn-primary mt-2 mb-2 me-2 fs-4">Validar paleta</button>
                 </div>
             </div>
 
@@ -545,7 +547,7 @@
         var app = new Vue({
             el: '#app',
             data: {
-                pantalla_actual: 'contenido_ubicacion',
+                pantalla_actual: 'login',
                 almacen: '',
                 usuario: 'juanra',
                 password: 'juanra',
@@ -620,6 +622,7 @@
                     }
 
                     this.pantalla_actual = 'contenido_ubicacion'
+                    // this.modal = new bootstrap.Modal(this.$refs.paleta_distinta_modal)
 
                 },
                 regresar_inventario() {
