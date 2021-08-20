@@ -16,62 +16,6 @@
 <body>
     <div id="app">
 
-        <div class="modal fade" id="paleta_distinta_modal" ref="paleta_distinta_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">El código de la paleta es diferente</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  
-                    <h2 class="text-center mt-5 mb-5">Confirmar nueva paleta en el hueco</h2>                       
-                    <div class="row mt-5">
-                        <div class="col-4">
-                            <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera" width="300px">
-                        </div>
-                        <div class="col-8 fs-3">
-                            <div class="row text-start">
-                                <div class="col-4">Pasillo</div>
-                                <div class="col-4">Columna</div>
-                                <div class="col-4">Altura</div>
-                            </div>
-                            <div class="row text-start fw-bold">
-                                <div class="col-4">{{ubicacion_seleccionada.pasillo}}</div>
-                                <div class="col-4">{{ubicacion_seleccionada.columna}}</div>
-                                <div class="col-4">{{ubicacion_seleccionada.altura}}</div>
-                            </div>
-                            <div class="row mt-4 text-start fw-bold">
-                                <div class="col-12">Descripción Articulo</div>
-                            </div>
-                            <div class="row mt-4 text-start fs-4">
-                                <div class="col-4">Artículo</div>
-                                <div class="col-4">V. logística</div>
-                                <div class="col-4">Cantidad</div>
-                            </div>
-                            <div class="row text-start fw-bold fs-4">
-                                <div class="col-4">58514</div>
-                                <div class="col-4">2</div>
-                                <div class="col-4">30 Cajas</div>
-                            </div>
-                            <div class="row mt-4 text-start">
-                                <div class="col-12">Código Paleta</div>
-                            </div>
-                            <div class="row text-start fw-bold">
-                                <div class="col-12">{{codigo_paleta_escaneada}}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" @click="modal.hide();codigo_paleta_escaneada='';">Cerrar</button>
-                  <button type="button" class="btn btn-primary">Confirmar</button>
-                </div>
-              </div>
-            </div>
-        </div>
-
         <div v-if="pantalla_actual=='login'" class="row">
             <div class="col-6 offset-3">
 
@@ -519,7 +463,39 @@
 
 
             <div class="col-8 offset-2 mb-4">
-                <h2 class="text-center mt-5 mb-4">Info de paleta</h2>
+                
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <!-- <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="false">Datos básicos</button>
+                      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" :aria-selected="false">Más datos</button>
+                      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Traspasos</button>
+                      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-entrada-salida" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Entradas/Salidas</button> -->
+                      <button @click="cambia_tab('datos_basicos')" class="nav-link" :class="tabs.datos_basicos ? 'active' : '' ">Datos básicos</button>
+                      <button @click="cambia_tab('mas_datos')"class="nav-link" :class="tabs.mas_datos ? 'active' : ''     ">Mas datos</button>
+                      <button @click="cambia_tab('traspasos')"class="nav-link" :class="tabs.traspasos ? 'active' : ''     ">Traspasos</button>
+                      <button @click="cambia_tab('entradas_salidas')"class="nav-link" :class="tabs.entradas_salidas ? 'active' : ''     ">Entradas/Salidas</button>
+                    </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane " :class="tabs.datos_basicos ? 'show active' : 'fade' " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <h2 class="text-center mt-5 mb-4">Datos básicos</h2>
+                    </div>
+                    <div class="tab-pane "  :class="tabs.mas_datos ? 'show active' : 'fade' " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <h2 class="text-center mt-5 mb-4">Más datos</h2>
+                    </div>
+                    <div class="tab-pane " :class="tabs.traspasos ? 'show active' : 'fade' " id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <h2 class="text-center mt-5 mb-4">Traspasos</h2>
+                    </div>
+                    <div class="tab-pane " :class="tabs.entradas_salidas ? 'show active' : 'fade' " id="nav-entrada-salida" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <h2 class="text-center mt-5 mb-4">Entradas/Salidas</h2>
+                    </div>
+                  </div>
+                  
+
+
+
+
+
                 
             </div>
 
@@ -532,6 +508,67 @@
 
 
         </div> <!-- fin datos_de_paleta -->
+
+
+        <!-- modales -->
+
+        <div class="modal fade" id="paleta_distinta_modal" ref="paleta_distinta_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">El código de la paleta es diferente</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                    <h2 class="text-center mt-5 mb-5">Confirmar nueva paleta en el hueco</h2>                       
+                    <div class="row mt-5">
+                        <div class="col-4">
+                            <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera" width="300px">
+                        </div>
+                        <div class="col-8 fs-3">
+                            <div class="row text-start">
+                                <div class="col-4">Pasillo</div>
+                                <div class="col-4">Columna</div>
+                                <div class="col-4">Altura</div>
+                            </div>
+                            <div class="row text-start fw-bold">
+                                <div class="col-4">{{ubicacion_seleccionada.pasillo}}</div>
+                                <div class="col-4">{{ubicacion_seleccionada.columna}}</div>
+                                <div class="col-4">{{ubicacion_seleccionada.altura}}</div>
+                            </div>
+                            <div class="row mt-4 text-start fw-bold">
+                                <div class="col-12">Descripción Articulo</div>
+                            </div>
+                            <div class="row mt-4 text-start fs-4">
+                                <div class="col-4">Artículo</div>
+                                <div class="col-4">V. logística</div>
+                                <div class="col-4">Cantidad</div>
+                            </div>
+                            <div class="row text-start fw-bold fs-4">
+                                <div class="col-4">58514</div>
+                                <div class="col-4">2</div>
+                                <div class="col-4">30 Cajas</div>
+                            </div>
+                            <div class="row mt-4 text-start">
+                                <div class="col-12">Código Paleta</div>
+                            </div>
+                            <div class="row text-start fw-bold">
+                                <div class="col-12">{{codigo_paleta_escaneada}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" @click="modal.hide();codigo_paleta_escaneada='';">Cerrar</button>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- fin modales -->
 
 
     </div> <!-- fin app -->
@@ -547,7 +584,7 @@
         var app = new Vue({
             el: '#app',
             data: {
-                pantalla_actual: 'login',
+                pantalla_actual: 'datos_de_paleta',
                 almacen: '',
                 usuario: 'juanra',
                 password: 'juanra',
@@ -566,10 +603,16 @@
                         imagen: '/images/leche_fresca_entera.jpg',
                         tipo: 'Caja',
                         situacion: 'UD'
-                    }                    
+                    }                 
                 },
                 codigo_paleta_escaneada: '',
                 modal: null,
+                tabs: {
+                    datos_basicos: false,
+                    mas_datos: true,
+                    traspasos: false,
+                    entradas_salidas: false,
+                }
             },
             mounted(){
                 
@@ -648,6 +691,20 @@
                 },
                 datos_paleta(){
                     this.pantalla_actual='datos_de_paleta'
+                },
+                cambia_tab(tab_name){
+
+                    if (!confirm("Seguro que desea cambiar de tab?")) {
+                        return;
+                    }
+
+                    this.tabs = {
+                                    datos_basicos: false,
+                                    mas_datos: false,
+                                    traspasos: false,
+                                    entradas_salidas: false,
+                                }
+                    this.tabs[tab_name] = true
                 }
             }
         })
