@@ -401,8 +401,8 @@
                 </div>
             </div>
 
-            
-            
+
+
 
 
 
@@ -411,7 +411,8 @@
                     <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
                 </div>
                 <div class="col-6 text-end">
-                    <button @click="validar_paleta()" class="btn btn-primary mt-2 mb-2 me-2 fs-4">Validar paleta</button>
+                    <button @click="validar_paleta()" class="btn btn-primary mt-2 mb-2 me-2 fs-4">Validar
+                        paleta</button>
                 </div>
             </div>
 
@@ -434,9 +435,11 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a @click="regresar_inventario()" class="nav-link active" aria-current="page" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                      </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                        class="bi bi-x" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                    </svg>
                                     <b>Datos de paleta</b></a>
                             </li>
                         </ul>
@@ -463,46 +466,148 @@
 
 
             <div class="col-8 offset-2 mb-4">
-                
+
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <!-- <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="false">Datos básicos</button>
+                        <!-- <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="false">Datos básicos</button>
                       <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" :aria-selected="false">Más datos</button>
                       <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Traspasos</button>
                       <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-entrada-salida" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Entradas/Salidas</button> -->
-                      <button @click="cambia_tab('datos_basicos')" class="nav-link" :class="tabs.datos_basicos ? 'active' : '' ">Datos básicos</button>
-                      <button @click="cambia_tab('mas_datos')"class="nav-link" :class="tabs.mas_datos ? 'active' : ''     ">Mas datos</button>
-                      <button @click="cambia_tab('traspasos')"class="nav-link" :class="tabs.traspasos ? 'active' : ''     ">Traspasos</button>
-                      <button @click="cambia_tab('entradas_salidas')"class="nav-link" :class="tabs.entradas_salidas ? 'active' : ''     ">Entradas/Salidas</button>
+                        <button @click="cambia_tab('datos_basicos')" class="nav-link"
+                            :class="tabs.datos_basicos ? 'active' : '' ">Datos básicos</button>
+                        <button @click="cambia_tab('mas_datos')" class="nav-link"
+                            :class="tabs.mas_datos ? 'active' : ''     ">Mas datos</button>
+                        <button @click="cambia_tab('traspasos')" class="nav-link"
+                            :class="tabs.traspasos ? 'active' : ''     ">Traspasos</button>
+                        <button @click="cambia_tab('entradas_salidas')" class="nav-link"
+                            :class="tabs.entradas_salidas ? 'active' : ''     ">Entradas/Salidas</button>
                     </div>
-                  </nav>
-                  <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane " :class="tabs.datos_basicos ? 'show active' : 'fade' " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <h2 class="text-center mt-5 mb-4">Datos básicos</h2>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane " :class="tabs.datos_basicos ? 'show active' : 'fade' " id="nav-home"
+                        role="tabpanel" aria-labelledby="nav-home-tab">
+                        <h2 class="text-center mt-5 mb-4">Información básica de la paleta</h2>
+                        <div class="row mt-5 fs-4">
+                            <div class="col-4 pe-5">
+                                <div class="row">
+                                    <div class="col-6">Pasillo</div>
+                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">Columna</div>
+                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">Altura</div>
+                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-12 text-center">
+                                        <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera"
+                                            width="200px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8 ps-5">
+                                <div class="row text-start">
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col">Código de Paleta</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col fw-bold">xxx</div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col">Denominación</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col fw-bold">leche fresca entera hacendado 1 L sin lactosa</div>
+                                        </div>
+
+
+                                        <div class="row mt-5">
+                                            <div class="col-6">Articulo</div>
+                                            <div class="col-6">Var. log</div>
+                                        </div>
+                                        <div class="row fs-5 fw-bold">
+                                            <div class="col-6">11111</div>
+                                            <div class="col-6">2</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+
+                                        <label for="cb_formato_venta" class="form-label fs-6">Formato de venta</label>
+                                        <select id="cb_formato_venta" class="form-select"
+                                            aria-label="Default select example">
+                                            <option>U - Unidades</option>
+                                            <option selected>C - Cajas</option>
+                                            <option>R - Retráctil</option>
+                                            <option>P - Peso</option>
+                                        </select>
+
+                                        <label for="cb_unidades_paleta" class="form-label fs-6">Unidades por
+                                            paleta</label>
+                                        <div class="input-group mb-3">
+                                            <button title="Restar unidad" class="input-group-text">-</button>
+                                            <input type="text" class="form-control" id="cb_unidades_paleta"
+                                                aria-label="">
+                                            <button title="Sumar unidad" class="input-group-text">+</button>
+                                        </div>
+
+                                        <label for="cb_unidades_caja" class="form-label fs-6">Unidades por caja</label>
+                                        <div class="input-group mb-3">
+                                            <button title="Restar unidad" class="input-group-text">-</button>
+                                            <input type="text" class="form-control" id="cb_unidades_caja" aria-label="">
+                                            <button title="Sumar unidad" class="input-group-text">+</button>
+                                        </div>
+
+                                        <label for="cb_kg_caja" class="form-label fs-6">KG por caja</label>
+                                        <div class="input-group mb-3">
+                                            <button title="Restar unidad" class="input-group-text">-</button>
+                                            <input type="text" class="form-control" id="cb_kg_caja" aria-label="">
+                                            <button title="Sumar unidad" class="input-group-text">+</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
                     </div>
-                    <div class="tab-pane "  :class="tabs.mas_datos ? 'show active' : 'fade' " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="tab-pane " :class="tabs.mas_datos ? 'show active' : 'fade' " id="nav-profile"
+                        role="tabpanel" aria-labelledby="nav-profile-tab">
                         <h2 class="text-center mt-5 mb-4">Más datos</h2>
                     </div>
-                    <div class="tab-pane " :class="tabs.traspasos ? 'show active' : 'fade' " id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div class="tab-pane " :class="tabs.traspasos ? 'show active' : 'fade' " id="nav-contact"
+                        role="tabpanel" aria-labelledby="nav-contact-tab">
                         <h2 class="text-center mt-5 mb-4">Traspasos</h2>
                     </div>
-                    <div class="tab-pane " :class="tabs.entradas_salidas ? 'show active' : 'fade' " id="nav-entrada-salida" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div class="tab-pane " :class="tabs.entradas_salidas ? 'show active' : 'fade' "
+                        id="nav-entrada-salida" role="tabpanel" aria-labelledby="nav-contact-tab">
                         <h2 class="text-center mt-5 mb-4">Entradas/Salidas</h2>
                     </div>
-                  </div>
-                  
+                </div>
 
 
 
 
 
-                
+
+
             </div>
 
 
             <div class="row fixed-bottom" style="background-color: lightgray">
-                <div class="col" style="margin: .5em;">
-                    Terminal {{numero_terminal}} ( 192.168.1.1 )
+                <div class="col-6">
+                    <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
+                </div>
+                <div class="col-6 text-end">
+                    <button class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
                 </div>
             </div>
 
@@ -512,59 +617,62 @@
 
         <!-- modales -->
 
-        <div class="modal fade" id="paleta_distinta_modal" ref="paleta_distinta_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="paleta_distinta_modal" ref="paleta_distinta_modal" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">El código de la paleta es diferente</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  
-                    <h2 class="text-center mt-5 mb-5">Confirmar nueva paleta en el hueco</h2>                       
-                    <div class="row mt-5">
-                        <div class="col-4">
-                            <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera" width="300px">
-                        </div>
-                        <div class="col-8 fs-3">
-                            <div class="row text-start">
-                                <div class="col-4">Pasillo</div>
-                                <div class="col-4">Columna</div>
-                                <div class="col-4">Altura</div>
-                            </div>
-                            <div class="row text-start fw-bold">
-                                <div class="col-4">{{ubicacion_seleccionada.pasillo}}</div>
-                                <div class="col-4">{{ubicacion_seleccionada.columna}}</div>
-                                <div class="col-4">{{ubicacion_seleccionada.altura}}</div>
-                            </div>
-                            <div class="row mt-4 text-start fw-bold">
-                                <div class="col-12">Descripción Articulo</div>
-                            </div>
-                            <div class="row mt-4 text-start fs-4">
-                                <div class="col-4">Artículo</div>
-                                <div class="col-4">V. logística</div>
-                                <div class="col-4">Cantidad</div>
-                            </div>
-                            <div class="row text-start fw-bold fs-4">
-                                <div class="col-4">58514</div>
-                                <div class="col-4">2</div>
-                                <div class="col-4">30 Cajas</div>
-                            </div>
-                            <div class="row mt-4 text-start">
-                                <div class="col-12">Código Paleta</div>
-                            </div>
-                            <div class="row text-start fw-bold">
-                                <div class="col-12">{{codigo_paleta_escaneada}}</div>
-                            </div>
-                        </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">El código de la paleta es diferente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
 
+                        <h2 class="text-center mt-5 mb-5">Confirmar nueva paleta en el hueco</h2>
+                        <div class="row mt-5">
+                            <div class="col-4">
+                                <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera"
+                                    width="300px">
+                            </div>
+                            <div class="col-8 fs-3">
+                                <div class="row text-start">
+                                    <div class="col-4">Pasillo</div>
+                                    <div class="col-4">Columna</div>
+                                    <div class="col-4">Altura</div>
+                                </div>
+                                <div class="row text-start fw-bold">
+                                    <div class="col-4">{{ubicacion_seleccionada.pasillo}}</div>
+                                    <div class="col-4">{{ubicacion_seleccionada.columna}}</div>
+                                    <div class="col-4">{{ubicacion_seleccionada.altura}}</div>
+                                </div>
+                                <div class="row mt-4 text-start fw-bold">
+                                    <div class="col-12">Descripción Articulo</div>
+                                </div>
+                                <div class="row mt-4 text-start fs-4">
+                                    <div class="col-4">Artículo</div>
+                                    <div class="col-4">V. logística</div>
+                                    <div class="col-4">Cantidad</div>
+                                </div>
+                                <div class="row text-start fw-bold fs-4">
+                                    <div class="col-4">58514</div>
+                                    <div class="col-4">2</div>
+                                    <div class="col-4">30 Cajas</div>
+                                </div>
+                                <div class="row mt-4 text-start">
+                                    <div class="col-12">Código Paleta</div>
+                                </div>
+                                <div class="row text-start fw-bold">
+                                    <div class="col-12">{{codigo_paleta_escaneada}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            @click="modal.hide();codigo_paleta_escaneada='';">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Confirmar</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" @click="modal.hide();codigo_paleta_escaneada='';">Cerrar</button>
-                  <button type="button" class="btn btn-primary">Confirmar</button>
-                </div>
-              </div>
             </div>
         </div>
 
@@ -576,9 +684,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    
+
     <script>
 
         var app = new Vue({
@@ -603,21 +711,21 @@
                         imagen: '/images/leche_fresca_entera.jpg',
                         tipo: 'Caja',
                         situacion: 'UD'
-                    }                 
+                    }
                 },
                 codigo_paleta_escaneada: '',
                 modal: null,
                 tabs: {
-                    datos_basicos: false,
-                    mas_datos: true,
+                    datos_basicos: true,
+                    mas_datos: false,
                     traspasos: false,
                     entradas_salidas: false,
                 }
             },
-            mounted(){
-                
+            mounted() {
+
                 this.modal = new bootstrap.Modal(this.$refs.paleta_distinta_modal)
-                
+
             },
             methods: {
                 opcion_no_implementada() {
@@ -670,7 +778,7 @@
                 },
                 regresar_inventario() {
                     this.resetea_ubicacion()
-                    this.codigo_paleta_escaneada=''
+                    this.codigo_paleta_escaneada = ''
                     this.pantalla_actual = 'inventario'
                 },
                 logout() {
@@ -681,7 +789,7 @@
                     }
                 },
                 validar_paleta() {
-                    if (this.codigo_paleta_escaneada==='186383453320098066') {
+                    if (this.codigo_paleta_escaneada === '186383453320098066') {
                         this.modal.show()
                     } else if (this.codigo_paleta_escaneada == '') {
                         this.datos_paleta()
@@ -689,21 +797,21 @@
                         alert("Articulo de paleta escaneada distinto al artículo del hueco")
                     }
                 },
-                datos_paleta(){
-                    this.pantalla_actual='datos_de_paleta'
+                datos_paleta() {
+                    this.pantalla_actual = 'datos_de_paleta'
                 },
-                cambia_tab(tab_name){
+                cambia_tab(tab_name) {
 
                     if (!confirm("Seguro que desea cambiar de tab?")) {
                         return;
                     }
 
                     this.tabs = {
-                                    datos_basicos: false,
-                                    mas_datos: false,
-                                    traspasos: false,
-                                    entradas_salidas: false,
-                                }
+                        datos_basicos: false,
+                        mas_datos: false,
+                        traspasos: false,
+                        entradas_salidas: false,
+                    }
                     this.tabs[tab_name] = true
                 }
             }
