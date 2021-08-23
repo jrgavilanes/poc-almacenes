@@ -582,6 +582,115 @@
                     <div class="tab-pane " :class="tabs.mas_datos ? 'show active' : 'fade' " id="nav-profile"
                         role="tabpanel" aria-labelledby="nav-profile-tab">
                         <h2 class="text-center mt-5 mb-4">Más datos</h2>
+                        <div class="row mt-5 fs-3">
+                            <div class="col-6 pe-5">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="fs-6" for="">Fecha de entrada</label>
+                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" value="2021-08-23">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="fs-6" for="">Fecha de caducidad</label>
+                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" value="2021-08-23">
+                                    </div>                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="fs-6" for="">Fecha de vida útil</label>
+                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" value="2021-08-23">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="cb_unidades_paleta" class="form-label fs-6">Unidades retractil</label>
+                                        <div class="input-group mb-3">
+                                            <button title="Restar unidad" class="input-group-text">-</button>
+                                            <input type="text" class="form-control" id="cb_unidades_paleta"
+                                                aria-label="">
+                                            <button title="Sumar unidad" class="input-group-text">+</button>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label for="cb_formato_venta" class="form-label fs-6">Exportabilidad</label>
+                                        <select id="cb_formato_venta" class="form-select"
+                                            aria-label="Default select example">
+                                            <option>NO</option>
+                                            <option selected>SÍ</option>                                            
+                                        </select>
+                                    </div>                                    
+                                </div>
+                                
+                            </div>
+                            <div class="col-6 ps-6">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label for="cb_formato_venta" class="form-label fs-6">Código EAN-13</label>
+                                        <div class="input-group">
+                                            <input type="text" v-model="codigo_paleta_escaneada" class="form-control"
+                                                aria-label="Dollar amount (with dot and two decimal places)">
+                                            <button @click="codigo_paleta_escaneada='186383453320098066'" class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                                    class="bi bi-upc-scan" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label for="cb_formato_venta" class="form-label fs-6">Código DUN-14</label>
+                                        <div class="input-group">
+                                            <input type="text" v-model="codigo_paleta_escaneada" class="form-control"
+                                                aria-label="Dollar amount (with dot and two decimal places)">
+                                            <button @click="codigo_paleta_escaneada='186383453320098066'" class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                                    class="bi bi-upc-scan" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label for="cb_formato_venta" class="form-label fs-6">Lote de fabricación</label>
+                                        <div class="input-group">
+                                            <input type="text" v-model="codigo_paleta_escaneada" class="form-control"
+                                                aria-label="Dollar amount (with dot and two decimal places)">
+                                            <button @click="codigo_paleta_escaneada='186383453320098066'" class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                                    class="bi bi-upc-scan" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                     <div class="tab-pane " :class="tabs.traspasos ? 'show active' : 'fade' " id="nav-contact"
                         role="tabpanel" aria-labelledby="nav-contact-tab">
@@ -716,8 +825,8 @@
                 codigo_paleta_escaneada: '',
                 modal: null,
                 tabs: {
-                    datos_basicos: true,
-                    mas_datos: false,
+                    datos_basicos: false,
+                    mas_datos: true,
                     traspasos: false,
                     entradas_salidas: false,
                 }
