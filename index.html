@@ -574,6 +574,16 @@
                         </div>
 
 
+                        <div class="row fixed-bottom" style="background-color: lightgray">
+                            <div class="col-6">
+                                <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <button class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
+                            </div>
+                        </div>
+
+
 
 
 
@@ -674,6 +684,15 @@
                             </div>
                         </div>
 
+                        <div class="row fixed-bottom" style="background-color: lightgray">
+                            <div class="col-6">
+                                <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <button class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
+                            </div>
+                        </div>
+
 
 
 
@@ -695,10 +714,213 @@
                     <div class="tab-pane " :class="tabs.traspasos ? 'show active' : 'fade' " id="nav-contact"
                         role="tabpanel" aria-labelledby="nav-contact-tab">
                         <h2 class="text-center mt-5 mb-4">Traspasos</h2>
+                        <div class="row mt-5 fs-4">
+                            <div class="col-4 pe-5">
+                                <div class="row">
+                                    <div class="col-6">Pasillo</div>
+                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">Columna</div>
+                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">Altura</div>
+                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-12 text-center">
+                                        <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera"
+                                            width="200px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8 ps-5">
+                                <div class="row text-start">
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col">Código de Paleta</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col fw-bold">xxx</div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col">Denominación</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col fw-bold">leche fresca entera hacendado 1 L sin lactosa</div>
+                                        </div>
+
+
+                                        <div class="row mt-5">
+                                            <div class="col-6">Articulo</div>
+                                            <div class="col-6">Var. log</div>
+                                        </div>
+                                        <div class="row fs-5 fw-bold">
+                                            <div class="col-6">11111</div>
+                                            <div class="col-6">2</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+
+                                        <div class="row">
+                                            <div class="col fs-6">Stock NO APTO en almacén</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col fw-bold">200 Unidades</div>
+                                        </div>
+
+                                        <label for="cb_formato_venta" class="form-label fs-6">Acción</label>
+                                        <select id="cb_formato_venta" class="form-select"
+                                            aria-label="Default select example">
+                                            <option selected>Pasar stock a NO APTO</option>
+                                            <option>Pasar de NO APTO a stock</option>
+                                            
+                                        </select>
+
+                                        <label for="cb_formato_venta" class="form-label fs-6">Formato a traspasar</label>
+                                        <select id="cb_formato_venta" class="form-select"
+                                            aria-label="Default select example">
+                                            <option>Unidades</option>
+                                            <option selected>Cajas</option>
+                                            <option>Retráctil</option>
+                                            <option>Kg</option>
+                                        </select>
+
+                                        <label for="cb_unidades_paleta" class="form-label fs-6">Cantidad</label>
+                                        <div class="input-group mb-3">
+                                            <button title="Restar unidad" class="input-group-text">-</button>
+                                            <input type="text" class="form-control" id="cb_unidades_paleta"
+                                                aria-label="">
+                                            <button title="Sumar unidad" class="input-group-text">+</button>
+                                        </div>                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row fixed-bottom" style="background-color: lightgray">
+                            <div class="col-6">
+                                <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <button class="btn btn-primary mt-2 mb-2 me-2 fs-4">Realizar traspaso</button>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
                     </div>
                     <div class="tab-pane " :class="tabs.entradas_salidas ? 'show active' : 'fade' "
                         id="nav-entrada-salida" role="tabpanel" aria-labelledby="nav-contact-tab">
                         <h2 class="text-center mt-5 mb-4">Entradas/Salidas</h2>
+                        <div class="row mt-5 fs-4">
+                            <div class="col-4 pe-5">
+                                <div class="row">
+                                    <div class="col-6">Pasillo</div>
+                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">Columna</div>
+                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">Altura</div>
+                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-12 text-center">
+                                        <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera"
+                                            width="200px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8 ps-5">
+                                <div class="row text-start">
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col">Código de Paleta</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col fw-bold">xxx</div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col">Denominación</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col fw-bold">leche fresca entera hacendado 1 L sin lactosa</div>
+                                        </div>
+
+
+                                        <div class="row mt-5">
+                                            <div class="col-6">Articulo</div>
+                                            <div class="col-6">Var. log</div>
+                                        </div>
+                                        <div class="row fs-5 fw-bold">
+                                            <div class="col-6">11111</div>
+                                            <div class="col-6">2</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+
+                                        
+                                        <label for="cb_formato_venta" class="form-label fs-6">Código</label>
+                                        <select id="cb_formato_venta" class="form-select"
+                                            aria-label="Default select example">
+                                            <option selected>01 - Rotura</option>
+                                            <option>02 - Autoconsumo</option>
+                                            
+                                        </select>
+                                        
+                                        <label for="cb_formato_venta" class="form-label fs-6">Causa</label>
+                                        <select id="cb_formato_venta" class="form-select"
+                                            aria-label="Default select example">
+                                            <option selected>03 - Gestión del transporte</option>
+                                            <option>04 - Gestión del almacén</option>
+                                            
+                                        </select>
+
+                                        <label for="cb_formato_venta" class="form-label fs-6">Formato</label>
+                                        <select id="cb_formato_venta" class="form-select"
+                                            aria-label="Default select example">
+                                            <option>Unidades</option>
+                                            <option selected>Cajas</option>
+                                            <option>Retráctil</option>
+                                            <option>Kg</option>
+                                        </select>
+
+                                        <label for="cb_unidades_paleta" class="form-label fs-6">Cantidad</label>
+                                        <div class="input-group mb-3">
+                                            <button title="Restar unidad" class="input-group-text">-</button>
+                                            <input type="text" class="form-control" id="cb_unidades_paleta"
+                                                aria-label="">
+                                            <button title="Sumar unidad" class="input-group-text">+</button>
+                                        </div>                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row fixed-bottom" style="background-color: lightgray">
+                            <div class="col-6">
+                                <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <button class="btn btn-primary mt-2 mb-2 me-2 fs-4">Realizar Operación</button>
+                            </div>
+                        </div>
+
+
+
+
                     </div>
                 </div>
 
@@ -711,14 +933,7 @@
             </div>
 
 
-            <div class="row fixed-bottom" style="background-color: lightgray">
-                <div class="col-6">
-                    <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
-                </div>
-                <div class="col-6 text-end">
-                    <button class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
-                </div>
-            </div>
+            
 
 
         </div> <!-- fin datos_de_paleta -->
@@ -801,7 +1016,7 @@
         var app = new Vue({
             el: '#app',
             data: {
-                pantalla_actual: 'datos_de_paleta',
+                pantalla_actual: 'login',
                 almacen: '',
                 usuario: 'juanra',
                 password: 'juanra',
@@ -825,8 +1040,8 @@
                 codigo_paleta_escaneada: '',
                 modal: null,
                 tabs: {
-                    datos_basicos: false,
-                    mas_datos: true,
+                    datos_basicos: true,
+                    mas_datos: false,
                     traspasos: false,
                     entradas_salidas: false,
                 }
@@ -911,9 +1126,9 @@
                 },
                 cambia_tab(tab_name) {
 
-                    if (!confirm("Seguro que desea cambiar de tab?")) {
-                        return;
-                    }
+                    // if (!confirm("Seguro que desea cambiar de tab?")) {
+                    //     return;
+                    // }
 
                     this.tabs = {
                         datos_basicos: false,
