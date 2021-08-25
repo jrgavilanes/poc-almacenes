@@ -491,19 +491,19 @@
                             <div class="col-4 pe-5">
                                 <div class="row">
                                     <div class="col-6">Pasillo</div>
-                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                    <div class="col-6 text-end fw-bold">{{bd.ubicacion.pasillo}}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">Columna</div>
-                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                    <div class="col-6 text-end fw-bold">{{bd.ubicacion.columna}}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">Altura</div>
-                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                    <div class="col-6 text-end fw-bold">{{bd.ubicacion.altura}}</div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-12 text-center">
-                                        <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera"
+                                        <img :src="bd.ubicacion.paleta.articulo.imagen" alt="imagen articulo"
                                             width="200px">
                                     </div>
                                 </div>
@@ -515,13 +515,13 @@
                                             <div class="col">Código de Paleta</div>
                                         </div>
                                         <div class="row">
-                                            <div class="col fw-bold">xxx</div>
+                                            <div class="col fw-bold">{{bd.ubicacion.paleta.codigo}}</div>
                                         </div>
                                         <div class="row mt-3">
                                             <div class="col">Denominación</div>
                                         </div>
                                         <div class="row">
-                                            <div class="col fw-bold">leche fresca entera hacendado 1 L sin lactosa</div>
+                                            <div class="col fw-bold">{{bd.ubicacion.paleta.articulo.descripcion}}</div>
                                         </div>
 
 
@@ -530,26 +530,26 @@
                                             <div class="col-6">Var. log</div>
                                         </div>
                                         <div class="row fs-5 fw-bold">
-                                            <div class="col-6">11111</div>
-                                            <div class="col-6">2</div>
+                                            <div class="col-6">{{bd.ubicacion.paleta.articulo.codigo}}</div>
+                                            <div class="col-6">{{bd.ubicacion.paleta.articulo.varlog}}</div>
                                         </div>
                                     </div>
                                     <div class="col-6">
 
                                         <label for="cb_formato_venta" class="form-label fs-6">Formato de venta</label>
-                                        <select id="cb_formato_venta" class="form-select"
+                                        <select v-model="bd.ubicacion.paleta.articulo.formato_venta"id="cb_formato_venta" class="form-select"
                                             aria-label="Default select example">
-                                            <option>U - Unidades</option>
-                                            <option selected>C - Cajas</option>
-                                            <option>R - Retráctil</option>
-                                            <option>P - Peso</option>
+                                            <option>Unidades</option>
+                                            <option>Cajas</option>
+                                            <option>Retráctil</option>
+                                            <option>Peso</option>
                                         </select>
 
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Unidades por
                                             paleta</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input type="text" class="form-control" id="cb_unidades_paleta"
+                                            <input v-model="bd.ubicacion.paleta.cantidad" type="text" class="form-control" id="cb_unidades_paleta"
                                                 aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
@@ -557,14 +557,14 @@
                                         <label for="cb_unidades_caja" class="form-label fs-6">Unidades por caja</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input type="text" class="form-control" id="cb_unidades_caja" aria-label="">
+                                            <input v-model="bd.ubicacion.paleta.articulo.unidades_caja" type="text" class="form-control" id="cb_unidades_caja" aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
 
                                         <label for="cb_kg_caja" class="form-label fs-6">KG por caja</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input type="text" class="form-control" id="cb_kg_caja" aria-label="">
+                                            <input v-model="bd.ubicacion.paleta.kg_caja" type="text" class="form-control" id="cb_kg_caja" aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
 
@@ -597,23 +597,23 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <label class="fs-6" for="">Fecha de entrada</label>
-                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" value="2021-08-23">
+                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_entrada">
                                     </div>
                                     <div class="col-6">
                                         <label class="fs-6" for="">Fecha de caducidad</label>
-                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" value="2021-08-23">
+                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_caducidad">
                                     </div>                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
                                         <label class="fs-6" for="">Fecha de vida útil</label>
-                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" value="2021-08-23">
+                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_vidautil">
                                     </div>
                                     <div class="col-6">
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Unidades retractil</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input type="text" class="form-control" id="cb_unidades_paleta"
+                                            <input v-model="bd.ubicacion.paleta.articulo.unidades_retractil" type="text" class="form-control" id="cb_unidades_paleta"
                                                 aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
@@ -622,7 +622,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <label for="cb_formato_venta" class="form-label fs-6">Exportabilidad</label>
-                                        <select id="cb_formato_venta" class="form-select"
+                                        <select v-model="bd.ubicacion.paleta.exportabilidad" id="cb_formato_venta" class="form-select"
                                             aria-label="Default select example">
                                             <option>NO</option>
                                             <option selected>SÍ</option>                                            
@@ -636,7 +636,7 @@
                                     <div class="col-12">
                                         <label for="cb_formato_venta" class="form-label fs-6">Código EAN-13</label>
                                         <div class="input-group">
-                                            <input type="text" v-model="codigo_paleta_escaneada" class="form-control"
+                                            <input type="text" v-model="bd.ubicacion.paleta.articulo.codigo_ean13" class="form-control"
                                                 aria-label="Dollar amount (with dot and two decimal places)">
                                             <button @click="codigo_paleta_escaneada='186383453320098066'" class="input-group-text">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
@@ -652,7 +652,7 @@
                                     <div class="col-12">
                                         <label for="cb_formato_venta" class="form-label fs-6">Código DUN-14</label>
                                         <div class="input-group">
-                                            <input type="text" v-model="codigo_paleta_escaneada" class="form-control"
+                                            <input type="text" v-model="bd.ubicacion.paleta.articulo.codigo_dun14" class="form-control"
                                                 aria-label="Dollar amount (with dot and two decimal places)">
                                             <button @click="codigo_paleta_escaneada='186383453320098066'" class="input-group-text">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
@@ -668,7 +668,7 @@
                                     <div class="col-12">
                                         <label for="cb_formato_venta" class="form-label fs-6">Lote de fabricación</label>
                                         <div class="input-group">
-                                            <input type="text" v-model="codigo_paleta_escaneada" class="form-control"
+                                            <input v-model="bd.ubicacion.paleta.lote_fabricacion" type="text" v-model="codigo_paleta_escaneada" class="form-control"
                                                 aria-label="Dollar amount (with dot and two decimal places)">
                                             <button @click="codigo_paleta_escaneada='186383453320098066'" class="input-group-text">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
@@ -718,19 +718,19 @@
                             <div class="col-4 pe-5">
                                 <div class="row">
                                     <div class="col-6">Pasillo</div>
-                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                    <div class="col-6 text-end fw-bold">{{bd.ubicacion.pasillo}}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">Columna</div>
-                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                    <div class="col-6 text-end fw-bold">{{bd.ubicacion.columna}}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">Altura</div>
-                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                    <div class="col-6 text-end fw-bold">{{bd.ubicacion.altura}}</div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-12 text-center">
-                                        <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera"
+                                        <img :src="bd.ubicacion.paleta.articulo.imagen" alt="imagen articulo"
                                             width="200px">
                                     </div>
                                 </div>
@@ -742,13 +742,13 @@
                                             <div class="col">Código de Paleta</div>
                                         </div>
                                         <div class="row">
-                                            <div class="col fw-bold">xxx</div>
+                                            <div class="col fw-bold">{{bd.ubicacion.paleta.codigo}}</div>
                                         </div>
                                         <div class="row mt-3">
                                             <div class="col">Denominación</div>
                                         </div>
                                         <div class="row">
-                                            <div class="col fw-bold">leche fresca entera hacendado 1 L sin lactosa</div>
+                                            <div class="col fw-bold">{{bd.ubicacion.paleta.articulo.descripcion}}</div>
                                         </div>
 
 
@@ -757,8 +757,8 @@
                                             <div class="col-6">Var. log</div>
                                         </div>
                                         <div class="row fs-5 fw-bold">
-                                            <div class="col-6">11111</div>
-                                            <div class="col-6">2</div>
+                                            <div class="col-6">{{bd.ubicacion.paleta.articulo.codigo}}</div>
+                                            <div class="col-6">{{bd.ubicacion.paleta.articulo.varlog}}</div>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -767,7 +767,7 @@
                                             <div class="col fs-6">Stock NO APTO en almacén</div>
                                         </div>
                                         <div class="row">
-                                            <div class="col fw-bold">200 Unidades</div>
+                                            <div class="col fw-bold">{{bd.ubicacion.paleta.articulo.unidades_noapto}} Unidades</div>
                                         </div>
 
                                         <label for="cb_formato_venta" class="form-label fs-6">Acción</label>
@@ -779,10 +779,10 @@
                                         </select>
 
                                         <label for="cb_formato_venta" class="form-label fs-6">Formato a traspasar</label>
-                                        <select id="cb_formato_venta" class="form-select"
+                                        <select v-model="bd.ubicacion.paleta.articulo.formato_venta" id="cb_formato_venta" class="form-select"
                                             aria-label="Default select example">
                                             <option>Unidades</option>
-                                            <option selected>Cajas</option>
+                                            <option>Cajas</option>
                                             <option>Retráctil</option>
                                             <option>Kg</option>
                                         </select>
@@ -790,7 +790,7 @@
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Cantidad</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input type="text" class="form-control" id="cb_unidades_paleta"
+                                            <input v-model="bd.ubicacion.paleta.cantidad" type="text" class="form-control" id="cb_unidades_paleta"
                                                 aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>                                        
@@ -824,19 +824,19 @@
                             <div class="col-4 pe-5">
                                 <div class="row">
                                     <div class="col-6">Pasillo</div>
-                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                    <div class="col-6 text-end fw-bold">{{bd.ubicacion.pasillo}}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">Columna</div>
-                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                    <div class="col-6 text-end fw-bold">{{bd.ubicacion.columna}}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">Altura</div>
-                                    <div class="col-6 text-end fw-bold">xxx</div>
+                                    <div class="col-6 text-end fw-bold">{{bd.ubicacion.altura}}</div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-12 text-center">
-                                        <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera"
+                                        <img :src="bd.ubicacion.paleta.articulo.imagen" alt="imagen articulo"
                                             width="200px">
                                     </div>
                                 </div>
@@ -848,13 +848,13 @@
                                             <div class="col">Código de Paleta</div>
                                         </div>
                                         <div class="row">
-                                            <div class="col fw-bold">xxx</div>
+                                            <div class="col fw-bold">{{bd.ubicacion.paleta.codigo}}</div>
                                         </div>
                                         <div class="row mt-3">
                                             <div class="col">Denominación</div>
                                         </div>
                                         <div class="row">
-                                            <div class="col fw-bold">leche fresca entera hacendado 1 L sin lactosa</div>
+                                            <div class="col fw-bold">{{bd.ubicacion.paleta.articulo.descripcion}}</div>
                                         </div>
 
 
@@ -863,8 +863,8 @@
                                             <div class="col-6">Var. log</div>
                                         </div>
                                         <div class="row fs-5 fw-bold">
-                                            <div class="col-6">11111</div>
-                                            <div class="col-6">2</div>
+                                            <div class="col-6">{{bd.ubicacion.paleta.articulo.codigo}}</div>
+                                            <div class="col-6">{{bd.ubicacion.paleta.articulo.varlog}}</div>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -887,10 +887,10 @@
                                         </select>
 
                                         <label for="cb_formato_venta" class="form-label fs-6">Formato</label>
-                                        <select id="cb_formato_venta" class="form-select"
+                                        <select v-model="bd.ubicacion.paleta.articulo.formato_venta" id="cb_formato_venta" class="form-select"
                                             aria-label="Default select example">
                                             <option>Unidades</option>
-                                            <option selected>Cajas</option>
+                                            <option>Cajas</option>
                                             <option>Retráctil</option>
                                             <option>Kg</option>
                                         </select>
@@ -898,7 +898,7 @@
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Cantidad</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input type="text" class="form-control" id="cb_unidades_paleta"
+                                            <input v-model="bd.ubicacion.paleta.cantidad"type="text" class="form-control" id="cb_unidades_paleta"
                                                 aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>                                        
@@ -1016,7 +1016,7 @@
         var app = new Vue({
             el: '#app',
             data: {
-                pantalla_actual: 'login',
+                pantalla_actual: 'datos_de_paleta',
                 almacen: '',
                 usuario: 'juanra',
                 password: 'juanra',
@@ -1035,6 +1035,35 @@
                         imagen: '/images/leche_fresca_entera.jpg',
                         tipo: 'Caja',
                         situacion: 'UD'
+                    }
+                },
+                bd: {
+                    ubicacion: {
+                        pasillo: '001',
+                        columna: '100',
+                        altura: '02',
+                        paleta: {
+                            codigo: '186383453320098065',
+                            articulo: {
+                                codigo: '58514',
+                                varlog: '2',
+                                imagen: 'images/leche_fresca_entera.jpg',
+                                descripcion: 'Leche entera fresca 1L Hacendado',
+                                formato_venta: 'Cajas',
+                                unidades_caja: '6',
+                                unidades_retractil: null,
+                                codigo_ean13:'20098065',
+                                codigo_dun14:'1863834533',
+                                unidades_noapto: '36',
+                            },
+                            cantidad: '20',
+                            kg_caja: null,
+                            fecha_entrada: '2021-08-25',
+                            fecha_caducidad: '2021-12-23',
+                            fecha_vidautil: '2021-09-23',
+                            exportabilidad: 'SÍ',
+                            lote_fabricacion: '4533200980',
+                        }
                     }
                 },
                 codigo_paleta_escaneada: '',
