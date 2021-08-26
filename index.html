@@ -371,15 +371,15 @@
                             <div class="col-4">Cantidad</div>
                         </div>
                         <div class="row text-start fw-bold fs-4">
-                            <div class="col-4">58514</div>
-                            <div class="col-4">2</div>
-                            <div class="col-4">20 Cajas</div>
+                            <div class="col-4">{{bd.ubicacion.paleta.articulo.codigo}}</div>
+                            <div class="col-4">{{bd.ubicacion.paleta.articulo.varlog}}</div>
+                            <div class="col-4">{{bd.ubicacion.paleta.cantidad}} {{bd.ubicacion.paleta.articulo.formato_venta}}</div>
                         </div>
                         <div class="row mt-4 text-start">
                             <div class="col-12">Código Paleta</div>
                         </div>
                         <div class="row text-start fw-bold">
-                            <div class="col-12">186383453320098065</div>
+                            <div class="col-12">{{bd.ubicacion.paleta.codigo}}</div>
                         </div>
                     </div>
                 </div>
@@ -389,7 +389,7 @@
                         <div class="input-group">
                             <input type="text" v-model="codigo_paleta_escaneada" class="form-control"
                                 aria-label="Dollar amount (with dot and two decimal places)">
-                            <button @click="codigo_paleta_escaneada='186383453320098066'" class="input-group-text">
+                            <button @click="escanea_paleta2()" class="input-group-text">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                                     class="bi bi-upc-scan" viewBox="0 0 16 16">
                                     <path
@@ -536,7 +536,7 @@
                                     </div>
                                     <div class="col-6">
 
-                                        <label for="cb_formato_venta" class="form-label fs-6">Formato de venta</label>
+                                        <label for="cb_formato_venta" class="form-label fs-6">Formato</label>
                                         <select v-model="bd.ubicacion.paleta.articulo.formato_venta"id="cb_formato_venta" class="form-select"
                                             aria-label="Default select example">
                                             <option>Unidades</option>
@@ -545,7 +545,7 @@
                                             <option>Peso</option>
                                         </select>
 
-                                        <label for="cb_unidades_paleta" class="form-label fs-6">Unidades por
+                                        <label for="cb_unidades_paleta" class="form-label fs-6">Formatos por
                                             paleta</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
@@ -579,7 +579,7 @@
                                 <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
                             </div>
                             <div class="col-6 text-end">
-                                <button class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
+                                <button @click="cambia_tab('mas_datos')" class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
                             </div>
                         </div>
 
@@ -597,17 +597,17 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <label class="fs-6" for="">Fecha de entrada</label>
-                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_entrada">
+                                        <input v-model="bd.ubicacion.paleta.fecha_entrada" class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_entrada">
                                     </div>
                                     <div class="col-6">
                                         <label class="fs-6" for="">Fecha de caducidad</label>
-                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_caducidad">
+                                        <input v-model="bd.ubicacion.paleta.fecha_caducidad" class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_caducidad">
                                     </div>                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
                                         <label class="fs-6" for="">Fecha de vida útil</label>
-                                        <input class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_vidautil">
+                                        <input v-model="bd.ubicacion.paleta.fecha_vidautil" class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_vidautil">
                                     </div>
                                     <div class="col-6">
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Unidades retractil</label>
@@ -689,7 +689,7 @@
                                 <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
                             </div>
                             <div class="col-6 text-end">
-                                <button class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
+                                <button @click="cambia_tab('mas_datos')" class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
                             </div>
                         </div>
 
@@ -790,7 +790,7 @@
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Cantidad</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input v-model="bd.ubicacion.paleta.cantidad" type="text" class="form-control" id="cb_unidades_paleta"
+                                            <input type="text" class="form-control" id="cb_unidades_paleta"
                                                 aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>                                        
@@ -898,7 +898,7 @@
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Cantidad</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input v-model="bd.ubicacion.paleta.cantidad"type="text" class="form-control" id="cb_unidades_paleta"
+                                            <input type="text" class="form-control" id="cb_unidades_paleta"
                                                 aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>                                        
@@ -977,9 +977,9 @@
                                     <div class="col-4">Cantidad</div>
                                 </div>
                                 <div class="row text-start fw-bold fs-4">
-                                    <div class="col-4">58514</div>
-                                    <div class="col-4">2</div>
-                                    <div class="col-4">30 Cajas</div>
+                                    <div class="col-4">{{bd.paleta2.articulo.codigo}}</div>
+                                    <div class="col-4">{{bd.paleta2.articulo.varlog}}</div>
+                                    <div class="col-4">{{bd.paleta2.cantidad}} {{bd.paleta2.articulo.formato_venta}}</div>
                                 </div>
                                 <div class="row mt-4 text-start">
                                     <div class="col-12">Código Paleta</div>
@@ -994,7 +994,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             @click="modal.hide();codigo_paleta_escaneada='';">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Confirmar</button>
+                        <button @click="confirmar_paleta2_en_hueco()" type="button" class="btn btn-primary">Confirmar</button>
                     </div>
                 </div>
             </div>
@@ -1016,7 +1016,7 @@
         var app = new Vue({
             el: '#app',
             data: {
-                pantalla_actual: 'datos_de_paleta',
+                pantalla_actual: 'login',
                 almacen: '',
                 usuario: 'juanra',
                 password: 'juanra',
@@ -1038,6 +1038,7 @@
                     }
                 },
                 bd: {
+                    backup_paleta: {},
                     ubicacion: {
                         pasillo: '001',
                         columna: '100',
@@ -1063,8 +1064,32 @@
                             fecha_vidautil: '2021-09-23',
                             exportabilidad: 'SÍ',
                             lote_fabricacion: '4533200980',
+                            situacion: 'UD'
                         }
-                    }
+                    },
+                    paleta2: {                        
+                        codigo: '186383453320098066',
+                        articulo: {
+                            codigo: '58514',
+                            varlog: '2',
+                            imagen: 'images/leche_fresca_entera.jpg',
+                            descripcion: 'Leche entera fresca 1L Hacendado',
+                            formato_venta: 'Cajas',
+                            unidades_caja: '6',
+                            unidades_retractil: null,
+                            codigo_ean13:'20098065',
+                            codigo_dun14:'1863834533',
+                            unidades_noapto: '36',
+                        },
+                        cantidad: '30',
+                        kg_caja: null,
+                        fecha_entrada: '2025-08-25',
+                        fecha_caducidad: '2025-12-23',
+                        fecha_vidautil: '2025-09-23',
+                        exportabilidad: 'SÍ',
+                        lote_fabricacion: '6666666666',
+                        situacion: 'NL'                        
+                    },                    
                 },
                 codigo_paleta_escaneada: '',
                 modal: null,
@@ -1130,9 +1155,54 @@
 
                 },
                 regresar_inventario() {
+                    if (JSON.stringify(this.bd.ubicacion.paleta) != this.backup_paleta) {
+                        if (!confirm("Confirmar cambios realizados?")) {
+                           this.bd.ubicacion.paleta = JSON.parse(this.backup_paleta)
+                        } else {
+                           this.backup_paleta = JSON.stringify(this.bd.ubicacion.paleta)                           
+                        }
+                    }
                     this.resetea_ubicacion()
                     this.codigo_paleta_escaneada = ''
                     this.pantalla_actual = 'inventario'
+                    this.tabs = {
+                        datos_basicos: true,
+                        mas_datos: false,
+                        traspasos: false,
+                        entradas_salidas: false,
+                    }
+                },
+                escanea_paleta2(){
+                    this.codigo_paleta_escaneada = this.bd.paleta2.codigo
+                },
+                confirmar_paleta2_en_hueco(){
+
+                    
+
+                    let paleta1=JSON.stringify(this.bd.ubicacion.paleta)
+                    let paleta2=JSON.stringify(this.bd.paleta2)
+
+                    console.log("antes")
+                    console.log(paleta1)
+                    console.log(paleta2)
+
+                    this.bd.ubicacion.paleta = JSON.parse(paleta2)
+                    this.bd.paleta2 = JSON.parse(paleta1)
+
+                    this.bd.ubicacion.paleta.situacion='UD'
+                    this.bd.paleta2.situacion='NL'
+
+                    this.modal.hide();
+                    this.codigo_paleta_escaneada='';
+
+                    paleta1=JSON.stringify(this.bd.ubicacion.paleta)
+                    paleta2=JSON.stringify(this.bd.paleta2)
+
+                    console.log("despues")
+                    console.log(paleta1)
+                    console.log(paleta2)
+
+                    this.datos_paleta()
                 },
                 logout() {
                     if (confirm("Seguro que desea salir?")) {
@@ -1142,7 +1212,7 @@
                     }
                 },
                 validar_paleta() {
-                    if (this.codigo_paleta_escaneada === '186383453320098066') {
+                    if (this.codigo_paleta_escaneada === this.bd.paleta2.codigo) {
                         this.modal.show()
                     } else if (this.codigo_paleta_escaneada == '') {
                         this.datos_paleta()
@@ -1151,13 +1221,25 @@
                     }
                 },
                 datos_paleta() {
+                    this.backup_paleta = JSON.stringify(this.bd.ubicacion.paleta)
+
+                    console.log(this.backup_paleta)
+                    
                     this.pantalla_actual = 'datos_de_paleta'
-                },
+                },                
                 cambia_tab(tab_name) {
 
-                    // if (!confirm("Seguro que desea cambiar de tab?")) {
-                    //     return;
-                    // }
+                    // console.log("backup", this.backup_paleta)
+                    // console.log("actual", JSON.parse(JSON.stringify(this.bd.ubicacion.paleta)))
+
+                    if (JSON.stringify(this.bd.ubicacion.paleta) != this.backup_paleta) {
+                        if (!confirm("Confirmar cambios realizados?")) {
+                           return;
+                        } else {
+                           this.backup_paleta = JSON.stringify(this.bd.ubicacion.paleta)
+                        }
+                    }
+                    
 
                     this.tabs = {
                         datos_basicos: false,
