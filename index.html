@@ -311,7 +311,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a @click="regresar_inventario()" class="nav-link active" aria-current="page" href="#">
+                                <a @click="salir_inventario()" class="nav-link active" aria-current="page" href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                                         class="bi bi-arrow-left" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
@@ -1223,7 +1223,19 @@
                     // this.modal = new bootstrap.Modal(this.$refs.paleta_distinta_modal)
 
                 },
+                salir_inventario(){
+                    this.resetea_ubicacion()
+                    this.codigo_paleta_escaneada = ''
+                    this.pantalla_actual = 'inventario'
+                    this.tabs = {
+                        datos_basicos: true,
+                        mas_datos: false,
+                        traspasos: false,
+                        entradas_salidas: false,
+                    }
+                },
                 regresar_inventario() {
+                    
                     if (JSON.stringify(this.bd.ubicacion.paleta) != this.backup_paleta) {
                         if (!confirm("Confirmar cambios realizados?")) {
                             this.bd.ubicacion.paleta = JSON.parse(this.backup_paleta)
@@ -1231,6 +1243,8 @@
                             this.backup_paleta = JSON.stringify(this.bd.ubicacion.paleta)
                         }
                     }
+                   
+                    
                     this.resetea_ubicacion()
                     this.codigo_paleta_escaneada = ''
                     this.pantalla_actual = 'inventario'
