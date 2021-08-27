@@ -16,6 +16,26 @@
 <body>
     <div id="app">
 
+        <div v-if="pantalla_actual=='elige_almacen'" class="row">
+            <div class="col-6 offset-3">
+                <h2 class="text-center mt-5 mb-4">Selección de almacén</h2>
+                <form>
+                    <div class="mb-3">
+                        <select v-model="almacen" class="form-select" aria-label="Default select example">
+                            <option disabled value="">Seleccione un almacén</option>
+                            <option>0960 - Ribarroja Secos</option>
+                            <option>1001 - Ribarroja Congelados</option>
+                        </select>
+                    </div>
+                    <div class="d-grid">
+                        <button @click.prevent="valida_almacen()" type="submit" class="btn btn-primary mt-3">Iniciar
+                            sesión</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
         <div v-if="pantalla_actual=='login'" class="row">
             <div class="col-6 offset-3">
 
@@ -49,31 +69,8 @@
 
                 </form>
             </div>
-
-
-
         </div>
 
-
-        <div v-if="pantalla_actual=='elige_almacen'" class="row">
-            <div class="col-6 offset-3">
-                <h2 class="text-center mt-5 mb-4">Selección de almacén</h2>
-                <form>
-                    <div class="mb-3">
-                        <select v-model="almacen" class="form-select" aria-label="Default select example">
-                            <option disabled value="">Seleccione un almacén</option>
-                            <option>0960 - Ribarroja Secos</option>
-                            <option>1001 - Ribarroja Congelados</option>
-                        </select>
-                    </div>
-                    <div class="d-grid">
-                        <button @click.prevent="valida_almacen()" type="submit" class="btn btn-primary mt-3">Iniciar
-                            sesión</button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
 
         <div v-if="pantalla_actual=='menu_principal'">
 
@@ -373,7 +370,8 @@
                         <div class="row text-start fw-bold fs-4">
                             <div class="col-4">{{bd.ubicacion.paleta.articulo.codigo}}</div>
                             <div class="col-4">{{bd.ubicacion.paleta.articulo.varlog}}</div>
-                            <div class="col-4">{{bd.ubicacion.paleta.cantidad}} {{bd.ubicacion.paleta.articulo.formato_venta}}</div>
+                            <div class="col-4">{{bd.ubicacion.paleta.cantidad}}
+                                {{bd.ubicacion.paleta.articulo.formato_venta}}</div>
                         </div>
                         <div class="row mt-4 text-start">
                             <div class="col-12">Código Paleta</div>
@@ -537,7 +535,8 @@
                                     <div class="col-6">
 
                                         <label for="cb_formato_venta" class="form-label fs-6">Formato</label>
-                                        <select v-model="bd.ubicacion.paleta.articulo.formato_venta"id="cb_formato_venta" class="form-select"
+                                        <select v-model="bd.ubicacion.paleta.articulo.formato_venta"
+                                            id="cb_formato_venta" class="form-select"
                                             aria-label="Default select example">
                                             <option>Unidades</option>
                                             <option>Cajas</option>
@@ -549,22 +548,24 @@
                                             paleta</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input v-model="bd.ubicacion.paleta.cantidad" type="text" class="form-control" id="cb_unidades_paleta"
-                                                aria-label="">
+                                            <input v-model="bd.ubicacion.paleta.cantidad" type="text"
+                                                class="form-control" id="cb_unidades_paleta" aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
 
                                         <label for="cb_unidades_caja" class="form-label fs-6">Unidades por caja</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input v-model="bd.ubicacion.paleta.articulo.unidades_caja" type="text" class="form-control" id="cb_unidades_caja" aria-label="">
+                                            <input v-model="bd.ubicacion.paleta.articulo.unidades_caja" type="text"
+                                                class="form-control" id="cb_unidades_caja" aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
 
                                         <label for="cb_kg_caja" class="form-label fs-6">KG por caja</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input v-model="bd.ubicacion.paleta.kg_caja" type="text" class="form-control" id="cb_kg_caja" aria-label="">
+                                            <input v-model="bd.ubicacion.paleta.kg_caja" type="text"
+                                                class="form-control" id="cb_kg_caja" aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
 
@@ -579,7 +580,8 @@
                                 <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
                             </div>
                             <div class="col-6 text-end">
-                                <button @click="cambia_tab('mas_datos')" class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
+                                <button @click="cambia_tab('mas_datos')"
+                                    class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
                             </div>
                         </div>
 
@@ -597,90 +599,104 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <label class="fs-6" for="">Fecha de entrada</label>
-                                        <input v-model="bd.ubicacion.paleta.fecha_entrada" class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_entrada">
+                                        <input v-model="bd.ubicacion.paleta.fecha_entrada" class="form-control"
+                                            type="date" id="birthdaytime" name="birthdaytime"
+                                            :value="bd.ubicacion.paleta.fecha_entrada">
                                     </div>
                                     <div class="col-6">
                                         <label class="fs-6" for="">Fecha de caducidad</label>
-                                        <input v-model="bd.ubicacion.paleta.fecha_caducidad" class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_caducidad">
-                                    </div>                                    
+                                        <input v-model="bd.ubicacion.paleta.fecha_caducidad" class="form-control"
+                                            type="date" id="birthdaytime" name="birthdaytime"
+                                            :value="bd.ubicacion.paleta.fecha_caducidad">
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
                                         <label class="fs-6" for="">Fecha de vida útil</label>
-                                        <input v-model="bd.ubicacion.paleta.fecha_vidautil" class="form-control" type="date" id="birthdaytime" name="birthdaytime" :value="bd.ubicacion.paleta.fecha_vidautil">
+                                        <input v-model="bd.ubicacion.paleta.fecha_vidautil" class="form-control"
+                                            type="date" id="birthdaytime" name="birthdaytime"
+                                            :value="bd.ubicacion.paleta.fecha_vidautil">
                                     </div>
                                     <div class="col-6">
-                                        <label for="cb_unidades_paleta" class="form-label fs-6">Unidades retractil</label>
+                                        <label for="cb_unidades_paleta" class="form-label fs-6">Unidades
+                                            retractil</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input v-model="bd.ubicacion.paleta.articulo.unidades_retractil" type="text" class="form-control" id="cb_unidades_paleta"
-                                                aria-label="">
+                                            <input v-model="bd.ubicacion.paleta.articulo.unidades_retractil" type="text"
+                                                class="form-control" id="cb_unidades_paleta" aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <label for="cb_formato_venta" class="form-label fs-6">Exportabilidad</label>
-                                        <select v-model="bd.ubicacion.paleta.exportabilidad" id="cb_formato_venta" class="form-select"
-                                            aria-label="Default select example">
+                                        <select v-model="bd.ubicacion.paleta.exportabilidad" id="cb_formato_venta"
+                                            class="form-select" aria-label="Default select example">
                                             <option>NO</option>
-                                            <option selected>SÍ</option>                                            
+                                            <option selected>SÍ</option>
                                         </select>
-                                    </div>                                    
+                                    </div>
                                 </div>
-                                
+
                             </div>
                             <div class="col-6 ps-6">
                                 <div class="row">
                                     <div class="col-12">
                                         <label for="cb_formato_venta" class="form-label fs-6">Código EAN-13</label>
                                         <div class="input-group">
-                                            <input type="text" v-model="bd.ubicacion.paleta.articulo.codigo_ean13" class="form-control"
+                                            <input type="text" v-model="bd.ubicacion.paleta.articulo.codigo_ean13"
+                                                class="form-control"
                                                 aria-label="Dollar amount (with dot and two decimal places)">
-                                            <button @click="codigo_paleta_escaneada='186383453320098066'" class="input-group-text">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                                                    class="bi bi-upc-scan" viewBox="0 0 16 16">
+                                            <button @click="codigo_paleta_escaneada='186383453320098066'"
+                                                class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                    fill="currentColor" class="bi bi-upc-scan" viewBox="0 0 16 16">
                                                     <path
                                                         d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z" />
                                                 </svg>
                                             </button>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <label for="cb_formato_venta" class="form-label fs-6">Código DUN-14</label>
                                         <div class="input-group">
-                                            <input type="text" v-model="bd.ubicacion.paleta.articulo.codigo_dun14" class="form-control"
+                                            <input type="text" v-model="bd.ubicacion.paleta.articulo.codigo_dun14"
+                                                class="form-control"
                                                 aria-label="Dollar amount (with dot and two decimal places)">
-                                            <button @click="codigo_paleta_escaneada='186383453320098066'" class="input-group-text">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                                                    class="bi bi-upc-scan" viewBox="0 0 16 16">
+                                            <button @click="codigo_paleta_escaneada='186383453320098066'"
+                                                class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                    fill="currentColor" class="bi bi-upc-scan" viewBox="0 0 16 16">
                                                     <path
                                                         d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z" />
                                                 </svg>
                                             </button>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <label for="cb_formato_venta" class="form-label fs-6">Lote de fabricación</label>
+                                        <label for="cb_formato_venta" class="form-label fs-6">Lote de
+                                            fabricación</label>
                                         <div class="input-group">
-                                            <input v-model="bd.ubicacion.paleta.lote_fabricacion" type="text" v-model="codigo_paleta_escaneada" class="form-control"
+                                            <input v-model="bd.ubicacion.paleta.lote_fabricacion" type="text"
+                                                v-model="codigo_paleta_escaneada" class="form-control"
                                                 aria-label="Dollar amount (with dot and two decimal places)">
-                                            <button @click="codigo_paleta_escaneada='186383453320098066'" class="input-group-text">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                                                    class="bi bi-upc-scan" viewBox="0 0 16 16">
+                                            <button @click="codigo_paleta_escaneada='186383453320098066'"
+                                                class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                    fill="currentColor" class="bi bi-upc-scan" viewBox="0 0 16 16">
                                                     <path
                                                         d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z" />
                                                 </svg>
                                             </button>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
-                                
+
                             </div>
                         </div>
 
@@ -689,7 +705,8 @@
                                 <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
                             </div>
                             <div class="col-6 text-end">
-                                <button @click="cambia_tab('mas_datos')" class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
+                                <button @click="regresar_inventario()"
+                                    class="btn btn-primary mt-2 mb-2 me-2 fs-4">Guardar</button>
                             </div>
                         </div>
 
@@ -767,19 +784,22 @@
                                             <div class="col fs-6">Stock NO APTO en almacén</div>
                                         </div>
                                         <div class="row">
-                                            <div class="col fw-bold">{{bd.ubicacion.paleta.articulo.unidades_noapto}} Unidades</div>
+                                            <div class="col fw-bold">{{bd.ubicacion.paleta.articulo.unidades_noapto}}
+                                                Unidades</div>
                                         </div>
 
                                         <label for="cb_formato_venta" class="form-label fs-6">Acción</label>
-                                        <select id="cb_formato_venta" class="form-select"
+                                        <select v-model="accion_traspaso" id="cb_formato_venta" class="form-select"
                                             aria-label="Default select example">
                                             <option selected>Pasar stock a NO APTO</option>
                                             <option>Pasar de NO APTO a stock</option>
-                                            
+
                                         </select>
 
-                                        <label for="cb_formato_venta" class="form-label fs-6">Formato a traspasar</label>
-                                        <select v-model="bd.ubicacion.paleta.articulo.formato_venta" id="cb_formato_venta" class="form-select"
+                                        <label for="cb_formato_venta" class="form-label fs-6">Formato a
+                                            traspasar</label>
+                                        <select v-model="formato_traspaso"
+                                            id="cb_formato_venta" class="form-select"
                                             aria-label="Default select example">
                                             <option>Unidades</option>
                                             <option>Cajas</option>
@@ -790,10 +810,10 @@
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Cantidad</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input type="text" class="form-control" id="cb_unidades_paleta"
+                                            <input v-model="cantidad_traspaso" type="text" class="form-control" id="cb_unidades_paleta"
                                                 aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
-                                        </div>                                        
+                                        </div>
 
                                     </div>
                                 </div>
@@ -806,7 +826,7 @@
                                 <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
                             </div>
                             <div class="col-6 text-end">
-                                <button class="btn btn-primary mt-2 mb-2 me-2 fs-4">Realizar traspaso</button>
+                                <button @click="realizar_traspaso()" class="btn btn-primary mt-2 mb-2 me-2 fs-4">Realizar traspaso</button>
                             </div>
                         </div>
 
@@ -869,25 +889,26 @@
                                     </div>
                                     <div class="col-6">
 
-                                        
+
                                         <label for="cb_formato_venta" class="form-label fs-6">Código</label>
                                         <select id="cb_formato_venta" class="form-select"
                                             aria-label="Default select example">
                                             <option selected>01 - Rotura</option>
                                             <option>02 - Autoconsumo</option>
-                                            
+
                                         </select>
-                                        
+
                                         <label for="cb_formato_venta" class="form-label fs-6">Causa</label>
                                         <select id="cb_formato_venta" class="form-select"
                                             aria-label="Default select example">
                                             <option selected>03 - Gestión del transporte</option>
                                             <option>04 - Gestión del almacén</option>
-                                            
+
                                         </select>
 
                                         <label for="cb_formato_venta" class="form-label fs-6">Formato</label>
-                                        <select v-model="bd.ubicacion.paleta.articulo.formato_venta" id="cb_formato_venta" class="form-select"
+                                        <select v-model="formato_traspaso"
+                                            id="cb_formato_venta" class="form-select"
                                             aria-label="Default select example">
                                             <option>Unidades</option>
                                             <option>Cajas</option>
@@ -898,10 +919,10 @@
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Cantidad</label>
                                         <div class="input-group mb-3">
                                             <button title="Restar unidad" class="input-group-text">-</button>
-                                            <input type="text" class="form-control" id="cb_unidades_paleta"
+                                            <input v-model="cantidad_entradas_salidas" type="text" class="form-control" id="cb_unidades_paleta"
                                                 aria-label="">
                                             <button title="Sumar unidad" class="input-group-text">+</button>
-                                        </div>                                        
+                                        </div>
 
                                     </div>
                                 </div>
@@ -914,7 +935,7 @@
                                 <p class="mt-2 mb-2 ms-2 fs-4">Terminal {{numero_terminal}} ( 192.168.1.1 )</p>
                             </div>
                             <div class="col-6 text-end">
-                                <button class="btn btn-primary mt-2 mb-2 me-2 fs-4">Realizar Operación</button>
+                                <button @click="realizar_entradas_salida()" class="btn btn-primary mt-2 mb-2 me-2 fs-4">Realizar Operación</button>
                             </div>
                         </div>
 
@@ -933,7 +954,7 @@
             </div>
 
 
-            
+
 
 
         </div> <!-- fin datos_de_paleta -->
@@ -979,7 +1000,8 @@
                                 <div class="row text-start fw-bold fs-4">
                                     <div class="col-4">{{bd.paleta2.articulo.codigo}}</div>
                                     <div class="col-4">{{bd.paleta2.articulo.varlog}}</div>
-                                    <div class="col-4">{{bd.paleta2.cantidad}} {{bd.paleta2.articulo.formato_venta}}</div>
+                                    <div class="col-4">{{bd.paleta2.cantidad}} {{bd.paleta2.articulo.formato_venta}}
+                                    </div>
                                 </div>
                                 <div class="row mt-4 text-start">
                                     <div class="col-12">Código Paleta</div>
@@ -994,7 +1016,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             @click="modal.hide();codigo_paleta_escaneada='';">Cerrar</button>
-                        <button @click="confirmar_paleta2_en_hueco()" type="button" class="btn btn-primary">Confirmar</button>
+                        <button @click="confirmar_paleta2_en_hueco()" type="button"
+                            class="btn btn-primary">Confirmar</button>
                     </div>
                 </div>
             </div>
@@ -1016,12 +1039,16 @@
         var app = new Vue({
             el: '#app',
             data: {
-                pantalla_actual: 'login',
+                pantalla_actual: 'elige_almacen',                
                 almacen: '',
                 usuario: 'juanra',
                 password: 'juanra',
                 numero_terminal: 15,
                 mensaje_error: '',
+                cantidad_traspaso: 0,
+                formato_traspaso: 'Cajas',
+                cantidad_entradas_salidas: 0,
+                accion_traspaso: 'Pasar stock a NO APTO',
                 ubicacion_seleccionada: {
                     pasillo: '',
                     columna: '',
@@ -1051,13 +1078,13 @@
                                 imagen: 'images/leche_fresca_entera.jpg',
                                 descripcion: 'Leche entera fresca 1L Hacendado',
                                 formato_venta: 'Cajas',
-                                unidades_caja: '6',
+                                unidades_caja: 6,
                                 unidades_retractil: null,
-                                codigo_ean13:'20098065',
-                                codigo_dun14:'1863834533',
-                                unidades_noapto: '36',
+                                codigo_ean13: '20098065',
+                                codigo_dun14: '1863834533',
+                                unidades_noapto: 36,
                             },
-                            cantidad: '20',
+                            cantidad: 20,
                             kg_caja: null,
                             fecha_entrada: '2021-08-25',
                             fecha_caducidad: '2021-12-23',
@@ -1067,7 +1094,7 @@
                             situacion: 'UD'
                         }
                     },
-                    paleta2: {                        
+                    paleta2: {
                         codigo: '186383453320098066',
                         articulo: {
                             codigo: '58514',
@@ -1075,21 +1102,21 @@
                             imagen: 'images/leche_fresca_entera.jpg',
                             descripcion: 'Leche entera fresca 1L Hacendado',
                             formato_venta: 'Cajas',
-                            unidades_caja: '6',
+                            unidades_caja: 6,
                             unidades_retractil: null,
-                            codigo_ean13:'20098065',
-                            codigo_dun14:'1863834533',
-                            unidades_noapto: '36',
+                            codigo_ean13: '20098065',
+                            codigo_dun14: '1863834533',
+                            unidades_noapto: 36,
                         },
-                        cantidad: '30',
+                        cantidad: 30,
                         kg_caja: null,
                         fecha_entrada: '2025-08-25',
                         fecha_caducidad: '2025-12-23',
                         fecha_vidautil: '2025-09-23',
                         exportabilidad: 'SÍ',
                         lote_fabricacion: '6666666666',
-                        situacion: 'NL'                        
-                    },                    
+                        situacion: 'NL'
+                    },
                 },
                 codigo_paleta_escaneada: '',
                 modal: null,
@@ -1109,10 +1136,52 @@
                 opcion_no_implementada() {
                     alert('Opción no implementada')
                 },
+                realizar_traspaso(){
+                    if (confirm(this.accion_traspaso + ": " + this.cantidad_traspaso + "?")) {
+                        if (this.accion_traspaso=="Pasar stock a NO APTO") {
+                            this.bd.ubicacion.paleta.cantidad -= parseInt(this.cantidad_traspaso)
+                            this.bd.ubicacion.paleta.articulo.unidades_noapto += parseInt(this.cantidad_traspaso) * parseInt(this.bd.ubicacion.paleta.articulo.unidades_caja)                            
+                        } else {
+                            this.bd.ubicacion.paleta.cantidad += parseInt(this.cantidad_traspaso)
+                            this.bd.ubicacion.paleta.articulo.unidades_noapto -= parseInt(this.cantidad_traspaso) * parseInt(this.bd.ubicacion.paleta.articulo.unidades_caja)
+                        }
+                        this.bd.paleta2.articulo.unidades_noapto = this.bd.ubicacion.paleta.articulo.unidades_noapto
+                        
+                        this.resetea_ubicacion()
+                        this.codigo_paleta_escaneada = ''
+                        this.pantalla_actual = 'inventario'
+                        this.tabs = {
+                            datos_basicos: true,
+                            mas_datos: false,
+                            traspasos: false,
+                            entradas_salidas: false,
+                        }    
+                        this.cantidad_traspaso=0
+                    } 
+
+                },
+                realizar_entradas_salida(){
+                    if (confirm("Confirmar operación ?")) {
+                        
+                        this.bd.ubicacion.paleta.cantidad -= parseInt(this.cantidad_entradas_salidas)                        
+                    
+                        
+                        this.resetea_ubicacion()
+                        this.codigo_paleta_escaneada = ''
+                        this.pantalla_actual = 'inventario'
+                        this.tabs = {
+                            datos_basicos: true,
+                            mas_datos: false,
+                            traspasos: false,
+                            entradas_salidas: false,
+                        }    
+                        this.cantidad_entradas_salidas=0
+                    }
+                },
                 valida_usuario() {
                     if (this.usuario == 'juanra' && this.password == 'juanra') {
                         this.mensaje_error = ''
-                        this.pantalla_actual = 'elige_almacen'
+                        this.pantalla_actual = 'menu_principal'
                     } else {
                         this.mensaje_error = 'Usuario no válido'
                     }
@@ -1121,7 +1190,7 @@
                     if (this.almacen == '') {
                         alert("Debe seleccionar un almacén de la lista")
                     } else {
-                        this.pantalla_actual = 'menu_principal'
+                        this.pantalla_actual = 'login'
                     }
                 },
                 menu_principal() {
@@ -1157,9 +1226,9 @@
                 regresar_inventario() {
                     if (JSON.stringify(this.bd.ubicacion.paleta) != this.backup_paleta) {
                         if (!confirm("Confirmar cambios realizados?")) {
-                           this.bd.ubicacion.paleta = JSON.parse(this.backup_paleta)
+                            this.bd.ubicacion.paleta = JSON.parse(this.backup_paleta)
                         } else {
-                           this.backup_paleta = JSON.stringify(this.bd.ubicacion.paleta)                           
+                            this.backup_paleta = JSON.stringify(this.bd.ubicacion.paleta)
                         }
                     }
                     this.resetea_ubicacion()
@@ -1172,15 +1241,15 @@
                         entradas_salidas: false,
                     }
                 },
-                escanea_paleta2(){
+                escanea_paleta2() {
                     this.codigo_paleta_escaneada = this.bd.paleta2.codigo
                 },
-                confirmar_paleta2_en_hueco(){
+                confirmar_paleta2_en_hueco() {
 
-                    
 
-                    let paleta1=JSON.stringify(this.bd.ubicacion.paleta)
-                    let paleta2=JSON.stringify(this.bd.paleta2)
+
+                    let paleta1 = JSON.stringify(this.bd.ubicacion.paleta)
+                    let paleta2 = JSON.stringify(this.bd.paleta2)
 
                     console.log("antes")
                     console.log(paleta1)
@@ -1189,14 +1258,14 @@
                     this.bd.ubicacion.paleta = JSON.parse(paleta2)
                     this.bd.paleta2 = JSON.parse(paleta1)
 
-                    this.bd.ubicacion.paleta.situacion='UD'
-                    this.bd.paleta2.situacion='NL'
+                    this.bd.ubicacion.paleta.situacion = 'UD'
+                    this.bd.paleta2.situacion = 'NL'
 
                     this.modal.hide();
-                    this.codigo_paleta_escaneada='';
+                    this.codigo_paleta_escaneada = '';
 
-                    paleta1=JSON.stringify(this.bd.ubicacion.paleta)
-                    paleta2=JSON.stringify(this.bd.paleta2)
+                    paleta1 = JSON.stringify(this.bd.ubicacion.paleta)
+                    paleta2 = JSON.stringify(this.bd.paleta2)
 
                     console.log("despues")
                     console.log(paleta1)
@@ -1206,9 +1275,9 @@
                 },
                 logout() {
                     if (confirm("Seguro que desea salir?")) {
-                        this.usuario = ''
-                        this.password = ''
-                        this.pantalla_actual = 'login'
+                        this.usuario = 'juanra'
+                        this.password = 'juanra'
+                        this.pantalla_actual = 'elige_almacen'
                     }
                 },
                 validar_paleta() {
@@ -1224,9 +1293,9 @@
                     this.backup_paleta = JSON.stringify(this.bd.ubicacion.paleta)
 
                     console.log(this.backup_paleta)
-                    
+
                     this.pantalla_actual = 'datos_de_paleta'
-                },                
+                },
                 cambia_tab(tab_name) {
 
                     // console.log("backup", this.backup_paleta)
@@ -1234,12 +1303,12 @@
 
                     if (JSON.stringify(this.bd.ubicacion.paleta) != this.backup_paleta) {
                         if (!confirm("Confirmar cambios realizados?")) {
-                           return;
+                            return;
                         } else {
-                           this.backup_paleta = JSON.stringify(this.bd.ubicacion.paleta)
+                            this.backup_paleta = JSON.stringify(this.bd.ubicacion.paleta)
                         }
                     }
-                    
+
 
                     this.tabs = {
                         datos_basicos: false,
