@@ -161,7 +161,7 @@
                         </div>
 
                         <div class="col-md-3 mt-5">
-                            <button @click="opcion_no_implementada()" type="button" class="btn btn-light w-100">
+                            <button @click="llama_api()" type="button" class="btn btn-light w-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
                                     class="bi bi-clipboard-data" viewBox="0 0 16 16">
                                     <path
@@ -1032,6 +1032,8 @@
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
     <script>
@@ -1135,6 +1137,25 @@
             methods: {
                 opcion_no_implementada() {
                     alert('Opción no implementada')
+                },
+                llama_api(){
+                    axios.get('http://localhost:8000/notes/')
+                        .then(function (response) {
+                            // handle success
+                            console.log(response.data)
+                            let resultado = ''
+                            for (let i of response.data) {
+                                resultado+="," + i.text
+                            }
+                            alert("llega: " + resultado)
+                        })
+                        .catch(function (error) {
+                            // handle error
+                            console.log(error);
+                        })
+                        .then(function () {
+                            // always executed
+                        });
                 },
                 realizar_traspaso(){
                     if (confirm(this.accion_traspaso + ": " + this.cantidad_traspaso + "?")) {
