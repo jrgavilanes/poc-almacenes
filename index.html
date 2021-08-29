@@ -16,65 +16,73 @@
 <body>
     <div id="app">
 
-        <div v-if="pantalla_actual=='elige_almacen'" class="row">
-            <div class="col-6 offset-3">
-                <h2 class="text-center mt-5 mb-4">Selección de almacén</h2>
-                <form>
-                    <div class="mb-3">
-                        <select v-model="almacen" class="form-select" aria-label="Default select example">
-                            <option disabled value="">Seleccione un almacén</option>
-                            <option>0960 - Ribarroja Secos</option>
-                            <option>1001 - Ribarroja Congelados</option>
-                        </select>
+        <div v-if="pantalla_actual=='elige_almacen'">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6 offset-3">
+                        <h2 class="text-center mt-5 mb-4">Selección de almacén</h2>
+                        <form>
+                            <div class="mb-3">
+                                <select v-model="almacen" class="form-select" aria-label="Default select example">
+                                    <option disabled value="">Seleccione un almacén</option>
+                                    <option>0960 - Ribarroja Secos</option>
+                                    <option>1001 - Ribarroja Congelados</option>
+                                </select>
+                            </div>
+                            <div class="d-grid">
+                                <button @click.prevent="valida_almacen()" type="submit" class="btn btn-primary mt-3">Iniciar
+                                    sesión</button>
+                            </div>    
+                        </form>
                     </div>
-                    <div class="d-grid">
-                        <button @click.prevent="valida_almacen()" type="submit" class="btn btn-primary mt-3">Iniciar
-                            sesión</button>
-                    </div>
-
-                </form>
+                </div>
+                
             </div>
         </div>
 
-        <div v-if="pantalla_actual=='login'" class="row">
-            <div class="col-6 offset-3">
+        <div v-if="pantalla_actual=='login'">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6 offset-3">
 
 
-                <h2 class="text-center mt-5 mb-4">Gestión de Almacenes</h2>
+                        <h2 class="text-center mt-5 mb-4">Gestión de Almacenes</h2>
 
-                <div v-if="mensaje_error" class="alert alert-danger" role="alert">
-                    {{mensaje_error}}
+                        <div v-if="mensaje_error" class="alert alert-danger" role="alert">
+                            {{mensaje_error}}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                            <input v-model="usuario" type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Introduce usuario de Mercadona"
+                                :autofocus="'autofocus'" :required="'required'">
+                            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                            <input v-model="password" type="password" class="form-control" id="exampleInputPassword1"
+                                placeholder="Introduce contraseña" required>
+                        </div>
+                        <!-- <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div> -->
+                        <div class="d-grid">
+                            <button @click.prevent="valida_usuario()" type="submit" class="btn btn-primary mt-3">Iniciar
+                                sesión</button>
+                        </div>
+
+                        </form>
+                    </div>
                 </div>
-
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Usuario</label>
-                    <input v-model="usuario" type="email" class="form-control" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="Introduce usuario de Mercadona"
-                        :autofocus="'autofocus'" :required="'required'">
-                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                    <input v-model="password" type="password" class="form-control" id="exampleInputPassword1"
-                        placeholder="Introduce contraseña" required>
-                </div>
-                <!-- <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div> -->
-                <div class="d-grid">
-                    <button @click.prevent="valida_usuario()" type="submit" class="btn btn-primary mt-3">Iniciar
-                        sesión</button>
-                </div>
-
-                </form>
             </div>
         </div>
 
 
         <div v-if="pantalla_actual=='menu_principal'">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
                 <div class="container-fluid">
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -117,10 +125,10 @@
             </nav>
 
 
-            <div class="col-8 offset-2 mb-4">
-                <h2 class="text-center mt-5 mb-4">Menú principal</h2>
+            <div class="col-8 offset-2 mb-1">
+                <h2 class="text-center mt-1 mb-1">Menú principal</h2>
                 <div class="container text-center">
-                    <div class="row mb-5">
+                    <div class="row mb-1">
 
                         <div class="col-md-3 mt-5">
                             <button @click="opcion_no_implementada()" type="button" class="btn btn-light w-100">
@@ -205,7 +213,7 @@
 
         <div v-if="pantalla_actual=='inventario'">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
                 <div class="container-fluid">
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -247,11 +255,11 @@
             </nav>
 
 
-            <div class="col-8 offset-2 mb-4">
-                <h2 class="text-center mt-5 mb-4">Selecciona una ubicación del almacén</h2>
-                <div class="container text-center mt-5">
+            <div class="col-8 offset-2 mb-1">
+                <h2 class="text-center mt-1 mb-1">Selecciona una ubicación del almacén</h2>
+                <div class="container-fluid text-center mt-5">
                     <div class="row mb-5 align-items-start">
-                        <div class="col-md-4">
+                        <div class="col-md-4 me-5">
                             <p class="mb-5">Utiliza el escanner</p>
                             <button @click="escanea_ubicacion()" class="btn btn-light active">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="198" height="198" fill="currentColor"
@@ -262,7 +270,7 @@
                             </button>
                         </div>
 
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             <p class="mb-5">Introduce manualmente</p>
                             <div class="form-group mb-3">
                                 <!-- <label for="pasillo">Pasillo</label> -->
@@ -300,7 +308,7 @@
 
         <div v-if="pantalla_actual=='contenido_ubicacion'">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
                 <div class="container-fluid">
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -341,59 +349,61 @@
                 </div>
             </nav>
 
-
-            <div class="col-8 offset-2 mb-4">
-                <h2 class="text-center mt-5 mb-5">Valida el contenido de la paleta para continuar</h2>
-                <div class="row mt-5">
-                    <div class="col-4">
-                        <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera" width="300px">
+            <div class="container-fluid">
+                <div class="col-sm-12 mb-1">
+                    <h2 class="text-center mt-1 mb-1">Valida el contenido de la paleta para continuar</h2>
+                    <div class="row mt-2">
+                        <div class="col-3 pe-1">
+                            <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera" width="200px">
+                        </div>
+                        <div class="col-9 fs-4">
+                            <div class="row text-start">
+                                <div class="col-4">Pasillo</div>
+                                <div class="col-4">Columna</div>
+                                <div class="col-4">Altura</div>
+                            </div>
+                            <div class="row text-start fw-bold">
+                                <div class="col-4">{{ubicacion_seleccionada.pasillo}}</div>
+                                <div class="col-4">{{ubicacion_seleccionada.columna}}</div>
+                                <div class="col-4">{{ubicacion_seleccionada.altura}}</div>
+                            </div>
+                            <div class="row mt-1 text-start fw-bold">
+                                <div class="col-12">Descripción Articulo</div>
+                            </div>
+                            <div class="row mt-1 text-start fs-4">
+                                <div class="col-4">Artículo</div>
+                                <div class="col-4">V. logística</div>
+                                <div class="col-4">Cantidad</div>
+                            </div>
+                            <div class="row text-start fw-bold fs-4">
+                                <div class="col-4">{{bd.ubicacion.paleta.articulo.codigo}}</div>
+                                <div class="col-4">{{bd.ubicacion.paleta.articulo.varlog}}</div>
+                                <div class="col-4">{{bd.ubicacion.paleta.cantidad}}
+                                    {{bd.ubicacion.paleta.articulo.formato_venta}}</div>
+                            </div>
+                            <div class="row mt-1 text-start">
+                                <div class="col-12">Código Paleta</div>
+                            </div>
+                            <div class="row text-start fw-bold">
+                                <div class="col-12">{{bd.ubicacion.paleta.codigo}}</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-8 fs-3">
-                        <div class="row text-start">
-                            <div class="col-4">Pasillo</div>
-                            <div class="col-4">Columna</div>
-                            <div class="col-4">Altura</div>
-                        </div>
-                        <div class="row text-start fw-bold">
-                            <div class="col-4">{{ubicacion_seleccionada.pasillo}}</div>
-                            <div class="col-4">{{ubicacion_seleccionada.columna}}</div>
-                            <div class="col-4">{{ubicacion_seleccionada.altura}}</div>
-                        </div>
-                        <div class="row mt-4 text-start fw-bold">
-                            <div class="col-12">Descripción Articulo</div>
-                        </div>
-                        <div class="row mt-4 text-start fs-4">
-                            <div class="col-4">Artículo</div>
-                            <div class="col-4">V. logística</div>
-                            <div class="col-4">Cantidad</div>
-                        </div>
-                        <div class="row text-start fw-bold fs-4">
-                            <div class="col-4">{{bd.ubicacion.paleta.articulo.codigo}}</div>
-                            <div class="col-4">{{bd.ubicacion.paleta.articulo.varlog}}</div>
-                            <div class="col-4">{{bd.ubicacion.paleta.cantidad}}
-                                {{bd.ubicacion.paleta.articulo.formato_venta}}</div>
-                        </div>
-                        <div class="row mt-4 text-start">
-                            <div class="col-12">Código Paleta</div>
-                        </div>
-                        <div class="row text-start fw-bold">
-                            <div class="col-12">{{bd.ubicacion.paleta.codigo}}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-12 fw-bold">Escanea o introduce el código de la paleta</div>
-                    <div class="col-12">
-                        <div class="input-group">
-                            <input type="text" v-model="codigo_paleta_escaneada" class="form-control"
-                                aria-label="Dollar amount (with dot and two decimal places)">
-                            <button @click="escanea_paleta2()" class="input-group-text">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                                    class="bi bi-upc-scan" viewBox="0 0 16 16">
-                                    <path
-                                        d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z" />
-                                </svg>
-                            </button>
+                    <div class="row mt-1">
+                        
+                        <div class="col-sm-10 offset-1">
+                            <div class="fw-bold">Escanea o introduce el código de la paleta</div>
+                            <div class="input-group">
+                                <input type="text" v-model="codigo_paleta_escaneada" class="form-control"
+                                    aria-label="Dollar amount (with dot and two decimal places)">
+                                <button @click="escanea_paleta2()" class="input-group-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                        class="bi bi-upc-scan" viewBox="0 0 16 16">
+                                        <path
+                                            d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -421,7 +431,7 @@
 
         <div v-if="pantalla_actual=='datos_de_paleta'">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
                 <div class="container-fluid">
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -463,7 +473,7 @@
             </nav>
 
 
-            <div class="col-8 offset-2 mb-4">
+            <div class="col-10 offset-1 mb-5">
 
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -484,9 +494,9 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane " :class="tabs.datos_basicos ? 'show active' : 'fade' " id="nav-home"
                         role="tabpanel" aria-labelledby="nav-home-tab">
-                        <h2 class="text-center mt-5 mb-4">Información básica de la paleta</h2>
-                        <div class="row mt-5 fs-4">
-                            <div class="col-4 pe-5">
+                        <h2 class="text-center mt-1 mb-1">Información básica de la paleta</h2>
+                        <div class="row pt-1 fs-5">
+                            <div class="col-4 pe-3">
                                 <div class="row">
                                     <div class="col-6">Pasillo</div>
                                     <div class="col-6 text-end fw-bold">{{bd.ubicacion.pasillo}}</div>
@@ -499,14 +509,14 @@
                                     <div class="col-6">Altura</div>
                                     <div class="col-6 text-end fw-bold">{{bd.ubicacion.altura}}</div>
                                 </div>
-                                <div class="row mt-4">
+                                <div class="row pt-2">
                                     <div class="col-12 text-center">
                                         <img :src="bd.ubicacion.paleta.articulo.imagen" alt="imagen articulo"
-                                            width="200px">
+                                            width="150px">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-8 ps-5">
+                            <div class="col-8 ps-2">
                                 <div class="row text-start">
                                     <div class="col-6">
                                         <div class="row">
@@ -515,7 +525,7 @@
                                         <div class="row">
                                             <div class="col fw-bold">{{bd.ubicacion.paleta.codigo}}</div>
                                         </div>
-                                        <div class="row mt-3">
+                                        <div class="row pt-3">
                                             <div class="col">Denominación</div>
                                         </div>
                                         <div class="row">
@@ -523,7 +533,7 @@
                                         </div>
 
 
-                                        <div class="row mt-5">
+                                        <div class="row pt-5">
                                             <div class="col-6">Articulo</div>
                                             <div class="col-6">Var. log</div>
                                         </div>
@@ -546,7 +556,7 @@
 
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Formatos por
                                             paleta</label>
-                                        <div class="input-group mb-3">
+                                        <div class="input-group">
                                             <button title="Restar unidad" class="input-group-text">-</button>
                                             <input v-model="bd.ubicacion.paleta.cantidad" type="text"
                                                 class="form-control" id="cb_unidades_paleta" aria-label="">
@@ -554,7 +564,7 @@
                                         </div>
 
                                         <label for="cb_unidades_caja" class="form-label fs-6">Unidades por caja</label>
-                                        <div class="input-group mb-3">
+                                        <div class="input-group">
                                             <button title="Restar unidad" class="input-group-text">-</button>
                                             <input v-model="bd.ubicacion.paleta.articulo.unidades_caja" type="text"
                                                 class="form-control" id="cb_unidades_caja" aria-label="">
@@ -562,7 +572,7 @@
                                         </div>
 
                                         <label for="cb_kg_caja" class="form-label fs-6">KG por caja</label>
-                                        <div class="input-group mb-3">
+                                        <div class="input-group">
                                             <button title="Restar unidad" class="input-group-text">-</button>
                                             <input v-model="bd.ubicacion.paleta.kg_caja" type="text"
                                                 class="form-control" id="cb_kg_caja" aria-label="">
@@ -593,8 +603,8 @@
                     </div>
                     <div class="tab-pane " :class="tabs.mas_datos ? 'show active' : 'fade' " id="nav-profile"
                         role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <h2 class="text-center mt-5 mb-4">Más datos</h2>
-                        <div class="row mt-5 fs-3">
+                        <h2 class="text-center mt-1 mb-1">Más datos</h2>
+                        <div class="row mt-1 fs-3">
                             <div class="col-6 pe-5">
                                 <div class="row">
                                     <div class="col-6">
@@ -730,8 +740,8 @@
                     </div>
                     <div class="tab-pane " :class="tabs.traspasos ? 'show active' : 'fade' " id="nav-contact"
                         role="tabpanel" aria-labelledby="nav-contact-tab">
-                        <h2 class="text-center mt-5 mb-4">Traspasos</h2>
-                        <div class="row mt-5 fs-4">
+                        <h2 class="text-center mt-1 mb-1">Traspasos</h2>
+                        <div class="row mt-1 fs-5">
                             <div class="col-4 pe-5">
                                 <div class="row">
                                     <div class="col-6">Pasillo</div>
@@ -748,7 +758,7 @@
                                 <div class="row mt-4">
                                     <div class="col-12 text-center">
                                         <img :src="bd.ubicacion.paleta.articulo.imagen" alt="imagen articulo"
-                                            width="200px">
+                                            width="150px">
                                     </div>
                                 </div>
                             </div>
@@ -839,8 +849,8 @@
                     </div>
                     <div class="tab-pane " :class="tabs.entradas_salidas ? 'show active' : 'fade' "
                         id="nav-entrada-salida" role="tabpanel" aria-labelledby="nav-contact-tab">
-                        <h2 class="text-center mt-5 mb-4">Entradas/Salidas</h2>
-                        <div class="row mt-5 fs-4">
+                        <h2 class="text-center mt-1 mb-1">Entradas/Salidas</h2>
+                        <div class="row mt-1 fs-5">
                             <div class="col-4 pe-5">
                                 <div class="row">
                                     <div class="col-6">Pasillo</div>
@@ -857,7 +867,7 @@
                                 <div class="row mt-4">
                                     <div class="col-12 text-center">
                                         <img :src="bd.ubicacion.paleta.articulo.imagen" alt="imagen articulo"
-                                            width="200px">
+                                            width="150px">
                                     </div>
                                 </div>
                             </div>
@@ -964,7 +974,7 @@
 
         <div class="modal fade" id="paleta_distinta_modal" ref="paleta_distinta_modal" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
+            <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">El código de la paleta es diferente</h5>
@@ -972,11 +982,11 @@
                     </div>
                     <div class="modal-body">
 
-                        <h2 class="text-center mt-5 mb-5">Confirmar nueva paleta en el hueco</h2>
-                        <div class="row mt-5">
+                        <h2 class="text-center mt-1 mb-2">Confirmar nueva paleta en el hueco</h2>
+                        <div class="row mt-1">
                             <div class="col-4">
                                 <img src="images/leche_fresca_entera.jpg" alt="imagen leche fresca entera"
-                                    width="300px">
+                                    width="200">
                             </div>
                             <div class="col-8 fs-3">
                                 <div class="row text-start">
