@@ -557,18 +557,18 @@
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Formatos por
                                             paleta</label>
                                         <div class="input-group">
-                                            <button title="Restar unidad" class="input-group-text">-</button>
+                                            <button @click="if (bd.ubicacion.paleta.cantidad>0) bd.ubicacion.paleta.cantidad-=1" title="Restar unidad" class="input-group-text">-</button>
                                             <input v-model="bd.ubicacion.paleta.cantidad" type="text"
                                                 class="form-control" id="cb_unidades_paleta" aria-label="">
-                                            <button title="Sumar unidad" class="input-group-text">+</button>
+                                            <button @click="bd.ubicacion.paleta.cantidad+=1" title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
 
                                         <label for="cb_unidades_caja" class="form-label fs-6">Unidades por caja</label>
                                         <div class="input-group">
-                                            <button title="Restar unidad" class="input-group-text">-</button>
+                                            <button @click="if (bd.ubicacion.paleta.articulo.unidades_caja>0) bd.ubicacion.paleta.articulo.unidades_caja-=1" title="Restar unidad" class="input-group-text">-</button>
                                             <input v-model="bd.ubicacion.paleta.articulo.unidades_caja" type="text"
                                                 class="form-control" id="cb_unidades_caja" aria-label="">
-                                            <button title="Sumar unidad" class="input-group-text">+</button>
+                                            <button @click="bd.ubicacion.paleta.articulo.unidades_caja+=1" title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
 
                                         <label for="cb_kg_caja" class="form-label fs-6">KG por caja</label>
@@ -819,10 +819,10 @@
 
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Cantidad</label>
                                         <div class="input-group mb-3">
-                                            <button title="Restar unidad" class="input-group-text">-</button>
+                                            <button @click="if (cantidad_traspaso>0) cantidad_traspaso-=1" title="Restar unidad" class="input-group-text">-</button>
                                             <input v-model="cantidad_traspaso" type="text" class="form-control" id="cb_unidades_paleta"
                                                 aria-label="">
-                                            <button title="Sumar unidad" class="input-group-text">+</button>
+                                            <button @click="cantidad_traspaso+=1" title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
 
                                     </div>
@@ -928,10 +928,10 @@
 
                                         <label for="cb_unidades_paleta" class="form-label fs-6">Cantidad</label>
                                         <div class="input-group mb-3">
-                                            <button title="Restar unidad" class="input-group-text">-</button>
+                                            <button @click="if (cantidad_entradas_salidas>0) cantidad_entradas_salidas-=1" title="Restar unidad" class="input-group-text">-</button>
                                             <input v-model="cantidad_entradas_salidas" type="text" class="form-control" id="cb_unidades_paleta"
                                                 aria-label="">
-                                            <button title="Sumar unidad" class="input-group-text">+</button>
+                                            <button @click="if (cantidad_entradas_salidas<bd.ubicacion.paleta.cantidad) cantidad_entradas_salidas+=1" title="Sumar unidad" class="input-group-text">+</button>
                                         </div>
 
                                     </div>
@@ -1240,6 +1240,8 @@
                     this.ubicacion_seleccionada.pasillo = ''
                     this.ubicacion_seleccionada.columna = ''
                     this.ubicacion_seleccionada.altura = ''
+                    this.cantidad_entradas_salidas = 0
+                    this.cantidad_traspaso = 0
                 },
                 validar_ubicacion() {
                     if (
